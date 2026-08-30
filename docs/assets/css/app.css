@@ -1,0 +1,32 @@
+:root {
+  --nv-green: #76b900;
+  --nv-green-dark: #5e9400;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #1a1a1a;
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: var(--nv-green-dark);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #101010;
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: var(--nv-green);
+}
+
+/* Domain weight badges used on index pages */
+.weight {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 1rem;
+  background: var(--nv-green);
+  color: #101010;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+/* Make quiz answer blocks visually distinct */
+.md-typeset details.question > summary {
+  font-weight: 600;
+}

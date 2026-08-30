@@ -1,0 +1,149 @@
+site_name: NCA-GENL Prep Course
+site_description: "A complete, self-hosted preparation course for the NVIDIA-Certified Associate: Generative AI LLMs (NCA-GENL) exam"
+site_author: Alessio Lapi
+repo_name: nca-genl-prep
+repo_url: https://github.com/alelapi/nca-genl-prep
+site_url: ''
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.path
+    - navigation.footer
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+extra_css:
+  - 'assets/css/app.css'
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - smarty
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Exam Guide:
+    - exam/index.md
+    - Official Blueprint: exam/blueprint.md
+    - Study Plan: exam/study-plan.md
+    - Official Resources: exam/resources.md
+    - Exam-Day Strategy: exam/exam-day.md
+    - Glossary: exam/glossary.md
+  - 1. Core ML & AI (30%):
+    - domain-1/index.md
+    - ML Fundamentals: domain-1/ml-fundamentals.md
+    - Neural Networks & Deep Learning: domain-1/neural-networks.md
+    - Transformers & Attention: domain-1/transformers.md
+    - LLMs & Foundation Models: domain-1/llm-landscape.md
+    - Embeddings & Vector Search: domain-1/embeddings.md
+    - Retrieval-Augmented Generation: domain-1/rag.md
+    - Prompt Engineering: domain-1/prompt-engineering.md
+    - Python NLP Stack: domain-1/python-nlp-stack.md
+    - Quiz: domain-1/quiz.md
+  - 2. Software Development (24%):
+    - domain-2/index.md
+    - LLM Application Architecture: domain-2/llm-app-architecture.md
+    - Model Customization & PEFT: domain-2/customization.md
+    - Inference Optimization: domain-2/inference-optimization.md
+    - Deployment & Serving: domain-2/deployment.md
+    - Distributed Training: domain-2/distributed-training.md
+    - Hardware & Memory Sizing: domain-2/hardware-sizing.md
+    - Quiz: domain-2/quiz.md
+  - 3. Experimentation (22%):
+    - domain-3/index.md
+    - Experiment Design & A/B Testing: domain-3/experiment-design.md
+    - Evaluation Metrics & Benchmarks: domain-3/evaluation-metrics.md
+    - Zero-, One- and Few-Shot Testing: domain-3/zero-few-shot.md
+    - Evaluating RAG Systems: domain-3/rag-evaluation.md
+    - Alignment, RLHF & Human Labeling: domain-3/rlhf-alignment.md
+    - Hallucinations: domain-3/hallucinations.md
+    - Quiz: domain-3/quiz.md
+  - 4. Data Analysis (14%):
+    - domain-4/index.md
+    - Data Preprocessing & Text Cleaning: domain-4/data-preprocessing.md
+    - EDA & Visualization: domain-4/eda-visualization.md
+    - Statistics & Performance Metrics: domain-4/statistics.md
+    - Accelerated Data Science (RAPIDS): domain-4/rapids.md
+    - Quiz: domain-4/quiz.md
+  - 5. Trustworthy AI (10%):
+    - domain-5/index.md
+    - Principles of Trustworthy AI: domain-5/principles.md
+    - Bias & Fairness: domain-5/bias-fairness.md
+    - Privacy, Consent & Data Governance: domain-5/privacy-consent.md
+    - Guardrails & LLM Security: domain-5/guardrails-security.md
+    - Quiz: domain-5/quiz.md
+  - Hands-On Labs:
+    - labs/index.md
+    - "Lab 0: Environment Setup": labs/00-setup.md
+    - "Lab 1: spaCy & NumPy": labs/01-spacy-numpy.md
+    - "Lab 2: Transformers with Hugging Face": labs/02-transformers-hf.md
+    - "Lab 3: Embeddings & Vector Search": labs/03-embeddings-vector-search.md
+    - "Lab 4: Build a RAG Pipeline": labs/04-rag.md
+    - "Lab 5: Evaluating an LLM": labs/05-evaluation.md
+    - "Lab 6: LoRA Fine-Tuning": labs/06-peft-lora.md
+  - Practice Exams:
+    - practice/index.md
+    - Mock Exam 1: practice/mock-exam-1.md
+    - Mock Exam 2: practice/mock-exam-2.md
+    - Rapid-Fire Flashcards: practice/flashcards.md
