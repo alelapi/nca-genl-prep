@@ -927,10 +927,105 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-transformers-replaced-rnns" class="md-nav__link">
+  <a href="#1-the-problem-the-transformer-was-invented-to-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why transformers replaced RNNs
+        1. The problem the transformer was invented to solve
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The problem the transformer was invented to solve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-previous-generation-did-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the previous generation did it
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-attention-built-up-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Attention, built up from scratch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Attention, built up from scratch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-dictionary-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The dictionary analogy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-q-k-and-v-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Q, K and V come from
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-scaled-dot-product-attention-worked-through-with-real-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Scaled dot-product attention, worked through with real numbers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Scaled dot-product attention, worked through with real numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-divide-by-d_k-the-argument-in-full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Why divide by √d_k — the argument in full
       
     </span>
   </a>
@@ -938,10 +1033,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#self-attention-step-by-step" class="md-nav__link">
+  <a href="#5-the-causal-mask-and-why-the-model-would-learn-nothing-without-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Self-attention, step by step
+        5. The causal mask — and why the model would learn nothing without it
       
     </span>
   </a>
@@ -949,10 +1044,138 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-head-attention" class="md-nav__link">
+  <a href="#6-multi-head-attention-why-one-attention-pattern-is-not-enough" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multi-head attention
+        6. Multi-head attention — why one attention pattern is not enough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Multi-head attention — why one attention pattern is not enough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-flavours-of-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three flavours of attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-positional-encoding-because-attention-is-blind-to-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Positional encoding — because attention is blind to order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Positional encoding — because attention is blind to order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sinusoidal-encoding-the-original-paper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sinusoidal encoding (the original paper)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alternatives-you-should-recognise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The alternatives you should recognise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-transformer-block-layer-by-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. The transformer block, layer by layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. The transformer block, layer by layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-feed-forward-network-where-most-of-the-parameters-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The feed-forward network — where most of the parameters live
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residual-connections-what-makes-depth-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Residual connections — what makes depth possible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-normalization-and-why-not-batch-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer normalization — and why not batch normalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-original-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The original configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-from-text-to-prediction-the-full-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. From text to prediction — the full pipeline
       
     </span>
   </a>
@@ -960,10 +1183,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#positional-encoding" class="md-nav__link">
+  <a href="#10-three-architecture-families-and-why-each-is-good-at-what-it-is-good-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Positional encoding
+        10. Three architecture families, and why each is good at what it is good at
       
     </span>
   </a>
@@ -971,54 +1194,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-transformer-block" class="md-nav__link">
+  <a href="#11-the-cost-of-attention-and-everything-built-to-reduce-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The transformer block
+        11. The cost of attention, and everything built to reduce it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. The cost of attention, and everything built to reduce it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The KV cache
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#three-architecture-families" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#the-optimizations-you-should-recognise-by-name" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Three architecture families
+        The optimizations you should recognise by name
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#from-tokens-to-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From tokens to output
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scaling-and-efficiency-vocabulary" class="md-nav__link">
+  <a href="#12-recap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scaling and efficiency vocabulary
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key takeaways
+        12. Recap
       
     </span>
   </a>
@@ -2700,10 +2918,105 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-transformers-replaced-rnns" class="md-nav__link">
+  <a href="#1-the-problem-the-transformer-was-invented-to-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why transformers replaced RNNs
+        1. The problem the transformer was invented to solve
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The problem the transformer was invented to solve">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-previous-generation-did-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the previous generation did it
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-attention-built-up-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Attention, built up from scratch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Attention, built up from scratch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-dictionary-analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The dictionary analogy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-q-k-and-v-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Q, K and V come from
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-scaled-dot-product-attention-worked-through-with-real-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Scaled dot-product attention, worked through with real numbers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Scaled dot-product attention, worked through with real numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-divide-by-d_k-the-argument-in-full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Why divide by √d_k — the argument in full
       
     </span>
   </a>
@@ -2711,10 +3024,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#self-attention-step-by-step" class="md-nav__link">
+  <a href="#5-the-causal-mask-and-why-the-model-would-learn-nothing-without-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Self-attention, step by step
+        5. The causal mask — and why the model would learn nothing without it
       
     </span>
   </a>
@@ -2722,10 +3035,138 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-head-attention" class="md-nav__link">
+  <a href="#6-multi-head-attention-why-one-attention-pattern-is-not-enough" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multi-head attention
+        6. Multi-head attention — why one attention pattern is not enough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Multi-head attention — why one attention pattern is not enough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-flavours-of-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three flavours of attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-positional-encoding-because-attention-is-blind-to-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Positional encoding — because attention is blind to order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Positional encoding — because attention is blind to order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sinusoidal-encoding-the-original-paper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sinusoidal encoding (the original paper)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alternatives-you-should-recognise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The alternatives you should recognise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-the-transformer-block-layer-by-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. The transformer block, layer by layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. The transformer block, layer by layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-feed-forward-network-where-most-of-the-parameters-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The feed-forward network — where most of the parameters live
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#residual-connections-what-makes-depth-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Residual connections — what makes depth possible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-normalization-and-why-not-batch-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer normalization — and why not batch normalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-original-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The original configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-from-text-to-prediction-the-full-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. From text to prediction — the full pipeline
       
     </span>
   </a>
@@ -2733,10 +3174,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#positional-encoding" class="md-nav__link">
+  <a href="#10-three-architecture-families-and-why-each-is-good-at-what-it-is-good-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Positional encoding
+        10. Three architecture families, and why each is good at what it is good at
       
     </span>
   </a>
@@ -2744,54 +3185,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-transformer-block" class="md-nav__link">
+  <a href="#11-the-cost-of-attention-and-everything-built-to-reduce-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The transformer block
+        11. The cost of attention, and everything built to reduce it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. The cost of attention, and everything built to reduce it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-kv-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The KV cache
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#three-architecture-families" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#the-optimizations-you-should-recognise-by-name" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Three architecture families
+        The optimizations you should recognise by name
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#from-tokens-to-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From tokens to output
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scaling-and-efficiency-vocabulary" class="md-nav__link">
+  <a href="#12-recap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scaling and efficiency vocabulary
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key takeaways
+        12. Recap
       
     </span>
   </a>
@@ -2867,73 +3303,304 @@
 
 
 <h1 id="transformers-attention">Transformers &amp; Attention<a class="headerlink" href="#transformers-attention" title="Permanent link">&para;</a></h1>
-<p><em>The single most heavily examined topic on NCA-GENL. NVIDIA&rsquo;s suggested reading list
-opens with</em> <strong>Attention Is All You Need</strong> <em>(Vaswani et al., 2017).</em></p>
-<h2 id="why-transformers-replaced-rnns">Why transformers replaced RNNs<a class="headerlink" href="#why-transformers-replaced-rnns" title="Permanent link">&para;</a></h2>
+<p><em>The single most heavily examined topic on NCA-GENL. NVIDIA&rsquo;s suggested reading list opens
+with</em> <strong>Attention Is All You Need</strong> <em>(Vaswani et al., 2017).</em></p>
+<p>This is a long page, and deliberately so. Almost everything else in the course — embeddings,
+RAG, fine-tuning, KV caches, quantization, inference cost — is a consequence of how this
+architecture works. If you understand the transformer properly, a large number of exam
+questions stop being facts to memorise and become things you can reason out.</p>
+<hr />
+<h2 id="1-the-problem-the-transformer-was-invented-to-solve">1. The problem the transformer was invented to solve<a class="headerlink" href="#1-the-problem-the-transformer-was-invented-to-solve" title="Permanent link">&para;</a></h2>
+<p>Start with what a language model actually does. Given a sequence of words, it must produce a
+probability distribution over what comes next:</p>
+<blockquote>
+<p>&ldquo;The cat sat on the ___&rdquo;</p>
+</blockquote>
+<p>To fill that blank well, a model needs two things. It needs to know <strong>which earlier words
+matter</strong> — &ldquo;cat&rdquo; and &ldquo;sat&rdquo; are highly relevant, &ldquo;The&rdquo; barely at all — and it needs to know
+<strong>where those words were</strong>, because &ldquo;the cat chased the dog&rdquo; and &ldquo;the dog chased the cat&rdquo;
+contain identical words and mean opposite things.</p>
+<p>Those two requirements — selective relevance and positional awareness — are the entire
+design brief. Every component of the transformer exists to serve one of them.</p>
+<h3 id="how-the-previous-generation-did-it">How the previous generation did it<a class="headerlink" href="#how-the-previous-generation-did-it" title="Permanent link">&para;</a></h3>
+<p>Before 2017, sequence modeling meant <strong>recurrent neural networks</strong>. An RNN processes text the
+way you read it: one token at a time, left to right, carrying a running summary called the
+<strong>hidden state</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>        h₀ ──► h₁ ──► h₂ ──► h₃ ──► h₄ ──► h₅
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>               ▲      ▲      ▲      ▲      ▲
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>              "The"  "cat"  "sat"  "on"   "the"
+</code></pre></div>
+<p>At each step the network takes the previous hidden state <code>hₜ₋₁</code> and the current token, and
+computes a new hidden state <code>hₜ</code>. The hidden state is a fixed-size vector — say 512 numbers —
+that is supposed to encode everything relevant from all preceding text.</p>
+<p>That design has two fatal problems, and understanding both is what makes the transformer&rsquo;s
+solution feel inevitable.</p>
+<p><strong>Problem one: the information bottleneck and vanishing gradients.</strong></p>
+<p>Everything the model knows about token 1 must survive being repeatedly transformed on its way
+to token 100. Each step multiplies the signal by a weight matrix and squashes it through a
+non-linearity. If the effective multiplier at each step is slightly less than 1 — say 0.9 —
+then after 100 steps the contribution of the first token has been scaled by 0.9¹⁰⁰ ≈ 0.000027.
+It has effectively vanished.</p>
+<p>The same thing happens in reverse during training. Gradients flowing backward from step 100
+to step 1 get multiplied by the same small factors, so the model receives almost no learning
+signal about long-range dependencies. This is the <strong>vanishing gradient problem</strong>, and it is
+why plain RNNs cannot learn that &ldquo;the <strong>keys</strong> that I left on the table in the kitchen this
+morning <strong>are</strong> missing&rdquo; requires &ldquo;are&rdquo; and not &ldquo;is&rdquo;.</p>
+<p>LSTMs and GRUs mitigated this with gating mechanisms — learned valves that decide what to
+keep, forget and output — which pushed the usable range from tens of tokens to a few hundred.
+They did not eliminate the problem; they postponed it.</p>
+<p><strong>Problem two: sequence processing cannot be parallelised.</strong></p>
+<p>This one killed RNNs commercially, and it is the reason a hardware company like NVIDIA cares.</p>
+<p>To compute <code>h₅</code> you need <code>h₄</code>. To compute <code>h₄</code> you need <code>h₃</code>. The dependency chain is strictly
+sequential. A GPU with 10,000 cores can only work on one timestep at a time, because timestep
+<em>t+1</em> is not computable until timestep <em>t</em> has finished. You have bought a machine designed to
+do thousands of things simultaneously and handed it a problem that must be done one thing at a
+time.</p>
+<p>Training time therefore scales linearly with sequence length and cannot be bought down with
+more hardware. In an era where the winning strategy turned out to be &ldquo;train on far more data&rdquo;,
+that is a hard ceiling.</p>
+<div class="admonition quote">
+<p class="admonition-title">The insight behind the paper&rsquo;s title</p>
+<p>The 2017 paper&rsquo;s contribution was not inventing attention — attention had been used <em>as an
+add-on to RNNs</em> since 2014. The contribution was noticing that if you keep the attention
+and <strong>throw the recurrence away entirely</strong>, you get a model that is both better at long
+range <em>and</em> fully parallelisable. Hence: <em>Attention Is All You Need</em>.</p>
+</div>
+<hr />
+<h2 id="2-attention-built-up-from-scratch">2. Attention, built up from scratch<a class="headerlink" href="#2-attention-built-up-from-scratch" title="Permanent link">&para;</a></h2>
+<p>Forget the formula for a moment. Let us derive the mechanism from the requirement.</p>
+<p>We want: for each token, a way to gather information from every other token, weighted by how
+relevant each one is. And we want the relevance weights to be <strong>learned</strong>, not hand-coded, and
+computed for all tokens <strong>simultaneously</strong>.</p>
+<h3 id="the-dictionary-analogy">The dictionary analogy<a class="headerlink" href="#the-dictionary-analogy" title="Permanent link">&para;</a></h3>
+<p>Think about how a Python dictionary works:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"cat"</span><span class="p">:</span> <span class="s2">"a small furry animal"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">:</span> <span class="s2">"a loyal furry animal"</span><span class="p">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">]</span>     <span class="c1"># exact match on the key, return the value</span>
+</code></pre></div>
+<p>You supply a <strong>query</strong> (<code>"cat"</code>), it is compared against the <strong>keys</strong>, and on an exact match
+you get back the corresponding <strong>value</strong>. It is all-or-nothing: the key either matches or it
+does not.</p>
+<p>Attention is a <strong>soft</strong> version of this lookup. Instead of returning one value on an exact
+match, it returns a <strong>weighted blend of all the values</strong>, where the weights come from how
+similar the query is to each key.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>query: "something furry"
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    key "cat"  → similarity 0.5 ─┐
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    key "dog"  → similarity 0.4 ─┼─► output = 0.5·value(cat) + 0.4·value(dog) + 0.1·value(car)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    key "car"  → similarity 0.1 ─┘
+</code></pre></div>
+<p>That is the whole idea. Everything that follows is mechanics.</p>
+<h3 id="where-q-k-and-v-come-from">Where Q, K and V come from<a class="headerlink" href="#where-q-k-and-v-come-from" title="Permanent link">&para;</a></h3>
+<p>Each token starts as an embedding vector — a list of numbers representing that token, say 512
+of them. From that single vector, the model produces three different vectors by multiplying it
+with three <strong>learned weight matrices</strong>:</p>
+<div class="arithmatex">\[ q_i = x_i W^Q \qquad k_i = x_i W^K \qquad v_i = x_i W^V \]</div>
+<p>The three roles, in plain language:</p>
+<ul>
+<li><strong>Query (<code>q</code>)</strong> — <em>&ldquo;here is what I, this token, am looking for.&rdquo;</em> A verb might be looking
+  for its subject. A pronoun might be looking for its antecedent.</li>
+<li><strong>Key (<code>k</code>)</strong> — <em>&ldquo;here is what I, this token, am. Here is what I advertise about myself.&rdquo;</em></li>
+<li><strong>Value (<code>v</code>)</strong> — <em>&ldquo;here is the information I contribute if you decide to attend to me.&rdquo;</em></li>
+</ul>
+<p>Why three separate projections rather than just comparing the embeddings directly? Because
+<strong>what a token advertises and what it contributes are different things</strong>, and both differ from
+what it is looking for. The word &ldquo;bank&rdquo; might advertise &ldquo;I am a noun, possibly financial,
+possibly geographic&rdquo; (its key) while contributing rich disambiguating content (its value) and
+simultaneously asking &ldquo;which nearby words tell me which sense I am?&rdquo; (its query). Three
+matrices give the model three independent degrees of freedom. <code>W^Q</code>, <code>W^K</code> and <code>W^V</code> are
+learned by gradient descent like any other weights.</p>
+<hr />
+<h2 id="3-scaled-dot-product-attention-worked-through-with-real-numbers">3. Scaled dot-product attention, worked through with real numbers<a class="headerlink" href="#3-scaled-dot-product-attention-worked-through-with-real-numbers" title="Permanent link">&para;</a></h2>
+<p>Here is the formula. We are going to take it apart and then compute an example by hand.</p>
+<div class="arithmatex">\[ \text{Attention}(Q,K,V) = \text{softmax}\!\left(\frac{QK^{T}}{\sqrt{d_k}}\right)V \]</div>
+<p>Five steps hide in there.</p>
+<p><strong>Step 1 — Score.</strong> Compute <code>Q · Kᵀ</code>. Every query is dotted with every key, producing an
+<code>n × n</code> matrix where entry <code>(i, j)</code> is &ldquo;how relevant is token <em>j</em> to token <em>i</em>&rdquo;.</p>
+<p>The dot product is used because it is a cheap, differentiable similarity measure: it is large
+and positive when two vectors point in the same direction, near zero when they are orthogonal,
+and negative when they oppose. And critically, computing all n² dot products at once is a
+single matrix multiplication — exactly the operation GPUs are built for.</p>
+<p><strong>Step 2 — Scale.</strong> Divide every score by <code>√d_k</code>. (Section 4 explains why in detail; it is a
+favourite exam detail.)</p>
+<p><strong>Step 3 — Mask.</strong> In a decoder, set the scores for future positions to −∞ so they cannot be
+attended to. (Section 5.)</p>
+<p><strong>Step 4 — Softmax.</strong> Convert each row of scores into a probability distribution — all weights
+positive, each row summing to 1.</p>
+<p><strong>Step 5 — Weighted sum.</strong> Multiply the attention weights by <code>V</code>. Each token&rsquo;s output is a
+blend of all the value vectors, weighted by relevance.</p>
+<h3 id="a-worked-example">A worked example<a class="headerlink" href="#a-worked-example" title="Permanent link">&para;</a></h3>
+<p>Let us make it concrete. Three tokens, and for readability we will use <code>d_k = 2</code>, so each
+query, key and value is just two numbers. Assume the projections have already been applied and
+produced:</p>
 <table>
 <thead>
 <tr>
-<th>Problem with RNN/LSTM</th>
-<th>Transformer&rsquo;s answer</th>
+<th>Token</th>
+<th>query <code>q</code></th>
+<th>key <code>k</code></th>
+<th>value <code>v</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tokens processed <strong>sequentially</strong> → cannot parallelise across the sequence</td>
-<td>Every position is processed <strong>simultaneously</strong></td>
+<td>1</td>
+<td><code>[1, 0]</code></td>
+<td><code>[1, 0]</code></td>
+<td><code>[1, 0]</code></td>
 </tr>
 <tr>
-<td>Long-range dependencies decay through many recurrent steps</td>
-<td><strong>Direct</strong> connection between any two positions (path length 1)</td>
+<td>2</td>
+<td>—</td>
+<td><code>[0, 1]</code></td>
+<td><code>[0, 1]</code></td>
 </tr>
 <tr>
-<td>Vanishing gradients over long sequences</td>
-<td>Residual connections + attention</td>
-</tr>
-<tr>
-<td>Training time scales with sequence length</td>
-<td>Training parallelises across the whole sequence on GPUs</td>
+<td>3</td>
+<td>—</td>
+<td><code>[1, 1]</code></td>
+<td><code>[1, 1]</code></td>
 </tr>
 </tbody>
 </table>
-<p>The cost: self-attention is <strong>O(n²)</strong> in sequence length — every token attends to every
-other token. That quadratic term is exactly why context windows are expensive and why
-so much research targets efficient attention.</p>
-<div class="admonition quote">
-<p class="admonition-title">The one-sentence summary</p>
-<p>Transformers replace recurrence with <strong>attention</strong>, letting every token look directly
-at every other token in a single, fully parallel operation.</p>
-</div>
-<h2 id="self-attention-step-by-step">Self-attention, step by step<a class="headerlink" href="#self-attention-step-by-step" title="Permanent link">&para;</a></h2>
-<p>Each input token embedding is projected into three vectors by learned weight matrices:</p>
+<p>We will compute the output for <strong>token 1</strong> only.</p>
+<p><strong>Score.</strong> Dot <code>q₁</code> with each key:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>q₁ · k₁ = (1)(1) + (0)(0) = 1
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>q₁ · k₂ = (1)(0) + (0)(1) = 0
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>q₁ · k₃ = (1)(1) + (0)(1) = 1
+</code></pre></div>
+<p>Raw scores: <code>[1, 0, 1]</code>. Token 1 finds tokens 1 and 3 equally relevant, token 2 irrelevant.</p>
+<p><strong>Scale.</strong> Divide by <code>√d_k = √2 ≈ 1.414</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[1/1.414, 0/1.414, 1/1.414] = [0.707, 0, 0.707]
+</code></pre></div>
+<p><strong>Softmax.</strong> Exponentiate and normalise:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>e^0.707 = 2.028      e^0 = 1.000      e^0.707 = 2.028
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sum = 2.028 + 1.000 + 2.028 = 5.056
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>weights = [2.028/5.056, 1.000/5.056, 2.028/5.056]
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        = [0.401, 0.198, 0.401]          (sums to 1.000 ✓)
+</code></pre></div>
+<p><strong>Weighted sum of values:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>output = 0.401·[1, 0]  +  0.198·[0, 1]  +  0.401·[1, 1]
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>       = [0.401, 0]    +  [0, 0.198]    +  [0.401, 0.401]
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>       = [0.802, 0.599]
+</code></pre></div>
+<p>Token 1&rsquo;s output vector is <code>[0.802, 0.599]</code> — a blend dominated by tokens 1 and 3, with a
+small contribution from token 2. <strong>That is one attention operation, in full.</strong></p>
+<p>The real thing does this for every token at once (so <code>q₂</code> and <code>q₃</code> get their own rows) with
+<code>d_k = 64</code> or <code>128</code> instead of 2, but the arithmetic is identical. Nothing else is happening.</p>
+<div class="admonition note">
+<p class="admonition-title">The shapes, so you can follow any diagram</p>
+<p>For a sequence of <code>n</code> tokens with model dimension <code>d_model</code> and head dimension <code>d_k</code>:</p>
 <ul>
-<li><strong>Query (Q)</strong> — &ldquo;what am I looking for?&rdquo;</li>
-<li><strong>Key (K)</strong> — &ldquo;what do I contain?&rdquo;</li>
-<li><strong>Value (V)</strong> — &ldquo;what do I contribute if selected?&rdquo;</li>
+<li><code>X</code> is <code>n × d_model</code> — the input embeddings</li>
+<li><code>W^Q</code>, <code>W^K</code>, <code>W^V</code> are each <code>d_model × d_k</code> — the learned projections</li>
+<li><code>Q</code>, <code>K</code>, <code>V</code> are each <code>n × d_k</code></li>
+<li><code>QKᵀ</code> is <strong><code>n × n</code></strong> — the attention score matrix, one row per token</li>
+<li>The output is <code>n × d_v</code>, the same length as the input sequence</li>
 </ul>
-<p><strong>Scaled dot-product attention:</strong></p>
-<div class="arithmatex">\[ \text{Attention}(Q,K,V) = \text{softmax}\!\left(\frac{QK^{T}}{\sqrt{d_k}}\right)V \]</div>
-<p>Read it as five steps:</p>
-<ol>
-<li><strong>Score</strong> — <code>Q · Kᵀ</code> gives every token&rsquo;s affinity with every other token.</li>
-<li><strong>Scale</strong> — divide by <code>√d_k</code>. Without it, dot products grow with dimension, the
-   softmax saturates, and gradients vanish. <em>This is a favourite exam detail.</em></li>
-<li><strong>Mask</strong> (decoders only) — set future positions to <code>−∞</code> so they cannot be attended to.</li>
-<li><strong>Softmax</strong> — turn scores into attention weights that sum to 1.</li>
-<li><strong>Weighted sum</strong> — combine the <code>V</code> vectors using those weights.</li>
-</ol>
-<h2 id="multi-head-attention">Multi-head attention<a class="headerlink" href="#multi-head-attention" title="Permanent link">&para;</a></h2>
-<p>Instead of one attention function over <code>d_model</code> dimensions, run <code>h</code> attention heads in
-parallel over <code>d_model / h</code> dimensions each, then concatenate and project.</p>
-<p>Why: different heads learn different relationships — one may track syntactic
-dependencies, another coreference, another positional proximity. It is an ensemble of
-attention patterns computed at the same cost.</p>
-<p><strong>Three flavours</strong> you must distinguish:</p>
+<p>That <code>n × n</code> matrix is the thing that makes attention powerful and expensive. Keep it in
+mind for section 9.</p>
+</div>
+<hr />
+<h2 id="4-why-divide-by-d_k-the-argument-in-full">4. Why divide by √d_k — the argument in full<a class="headerlink" href="#4-why-divide-by-d_k-the-argument-in-full" title="Permanent link">&para;</a></h2>
+<p>This is asked constantly, and most people memorise &ldquo;it prevents saturation&rdquo; without knowing
+why. The reasoning is short and worth actually understanding.</p>
+<p>Suppose the components of <code>q</code> and <code>k</code> are roughly independent, with mean 0 and variance 1 —
+which is approximately what standard initialisation and layer normalization give you. The dot
+product is a sum of <code>d_k</code> such products:</p>
+<div class="arithmatex">\[ q \cdot k = \sum_{i=1}^{d_k} q_i k_i \]</div>
+<p>Each term <code>qᵢkᵢ</code> has mean 0 and variance 1. Variances of independent terms add, so:</p>
+<div class="arithmatex">\[ \operatorname{Var}(q \cdot k) = d_k \qquad\Longrightarrow\qquad \text{standard deviation} = \sqrt{d_k} \]</div>
+<p><strong>The magnitude of the scores grows with the square root of the dimension.</strong> With <code>d_k = 64</code>,
+typical scores are around ±8. With <code>d_k = 512</code>, they are around ±23.</p>
+<p>Now recall what softmax does with large inputs. Softmax is exponential, so it amplifies
+differences ruthlessly. Two scores differing by 20 produce a probability ratio of
+<code>e²⁰ ≈ 485,000,000</code> — one weight becomes essentially 1.0 and all the others essentially 0.
+The distribution collapses to a <strong>one-hot vector</strong>.</p>
+<p>Why is that bad? Because of the gradient. The derivative of softmax with respect to an input
+whose output probability <code>p</code> is near 0 or near 1 involves the factor <code>p(1 − p)</code>, which
+approaches <strong>zero</strong> in both cases. A saturated softmax passes almost no gradient backwards, so
+the attention weights stop learning. The model gets stuck with whatever attention pattern it
+happened to initialise with.</p>
+<p>Dividing by <code>√d_k</code> exactly cancels the dimension-dependent growth, restoring the score
+variance to 1 regardless of head size. The softmax stays in its responsive region and
+gradients keep flowing.</p>
+<div class="admonition tip">
+<p class="admonition-title">The one-sentence exam answer</p>
+<p>Without <code>√d_k</code>, dot products grow with dimension, the softmax saturates into a near-one-hot
+distribution, and the gradients vanish — so attention stops learning. The scaling keeps
+score variance constant so softmax stays in its sensitive range.</p>
+<p>Note what it is <strong>not</strong>: it is not normalising the output to unit length, and it does not
+change the O(n²) complexity. Both appear as distractors.</p>
+</div>
+<hr />
+<h2 id="5-the-causal-mask-and-why-the-model-would-learn-nothing-without-it">5. The causal mask — and why the model would learn nothing without it<a class="headerlink" href="#5-the-causal-mask-and-why-the-model-would-learn-nothing-without-it" title="Permanent link">&para;</a></h2>
+<p>Attention as described lets every token see every other token, including tokens that come
+<em>after</em> it. For an encoder that is exactly what you want. For a model being trained to predict
+the next token, it is catastrophic.</p>
+<p>Think about what training looks like. You show the model &ldquo;The cat sat on the mat&rdquo; and ask it,
+at every position simultaneously, to predict the following token. Position 3 should learn to
+predict &ldquo;on&rdquo; from &ldquo;The cat sat&rdquo;. But if position 3 can attend to position 4, it can simply
+<strong>read the answer</strong> and copy it. The loss goes to zero, the model learns nothing, and at
+inference time — when future tokens genuinely do not exist — it collapses.</p>
+<p>The fix is the <strong>causal mask</strong> (also called the look-ahead mask). Before the softmax, every
+score at position <code>(i, j)</code> where <code>j &gt; i</code> is set to −∞:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>        to:  t₁    t₂    t₃    t₄
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>from t₁:   [ 0.4  -inf  -inf  -inf ]
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>from t₂:   [ 0.2   0.6  -inf  -inf ]
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>from t₃:   [ 0.1   0.3   0.5  -inf ]
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>from t₄:   [ 0.2   0.1   0.4   0.7 ]
+</code></pre></div>
+<p>Why −∞ specifically? Because <code>e^(−∞) = 0</code>. After softmax, those positions receive a weight of
+exactly zero and contribute nothing to the weighted sum — while the remaining weights still
+normalise correctly to sum to 1. Using −∞ rather than simply deleting the entries lets the
+whole thing stay a single dense matrix operation, which is what keeps it fast.</p>
+<p>This lower-triangular pattern is why decoder-only models are also called <strong>causal</strong> or
+<strong>autoregressive</strong>: information flows only from past to future, never backwards.</p>
+<div class="admonition important">
+<p class="admonition-title">This mask is the entire difference between BERT and GPT</p>
+<p>Same blocks, same attention, same feed-forward layers. BERT leaves the matrix full and
+trains by masking out ~15% of the <em>input tokens</em> and predicting them from both directions.
+GPT applies the causal mask and trains by predicting every next token.</p>
+<p>That single architectural choice is why encoders are good at understanding and embedding
+while decoders are good at generating. Section 10 develops this.</p>
+</div>
+<hr />
+<h2 id="6-multi-head-attention-why-one-attention-pattern-is-not-enough">6. Multi-head attention — why one attention pattern is not enough<a class="headerlink" href="#6-multi-head-attention-why-one-attention-pattern-is-not-enough" title="Permanent link">&para;</a></h2>
+<p>Consider the sentence:</p>
+<blockquote>
+<p>&ldquo;The animal didn&rsquo;t cross the street because <strong>it</strong> was too tired.&rdquo;</p>
+</blockquote>
+<p>To resolve &ldquo;it&rdquo;, the model needs to link it to &ldquo;animal&rdquo;. But other relationships matter at the
+same time: &ldquo;cross&rdquo; needs its subject, &ldquo;street&rdquo; needs its determiner, &ldquo;tired&rdquo; needs whatever it
+describes. A single attention distribution has to be <em>one</em> set of weights per token. It cannot
+simultaneously look hard at &ldquo;animal&rdquo; for coreference and hard at &ldquo;cross&rdquo; for syntax — softmax
+forces the weights to compete for a fixed budget of 1.0.</p>
+<p><strong>Multi-head attention</strong> solves this by running several attention operations in parallel, each
+with its own <code>W^Q</code>, <code>W^K</code>, <code>W^V</code>, and concatenating the results:</p>
+<div class="arithmatex">\[ \text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)\,W^O \]</div>
+<div class="arithmatex">\[ \text{where}\quad \text{head}_i = \text{Attention}(XW_i^Q,\; XW_i^K,\; XW_i^V) \]</div>
+<p>The dimensions are chosen so this costs <strong>nothing extra</strong>. With <code>d_model = 512</code> and <code>h = 8</code>
+heads, each head works in <code>d_k = d_model / h = 64</code> dimensions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>8 heads × 64 dims = 512 dims concatenated  →  W^O (512×512)  →  512 dims out
+</code></pre></div>
+<p>Parameter count for one big 512-dimensional head: <code>512 × 512 = 262,144</code> per projection.
+For 8 heads of 64 dimensions: <code>8 × (512 × 64) = 262,144</code>. <strong>Identical.</strong> You get eight
+different relationship patterns for the price of one.</p>
+<p>The final <code>W^O</code> matters more than it looks: concatenation just stacks the heads side by side,
+and <code>W^O</code> is the learned layer that mixes their outputs back into a single coherent
+representation.</p>
+<p>In practice, probing trained models shows heads specialising — some track syntactic
+dependencies, some resolve coreference, some attend to the previous token, some attend almost
+entirely to punctuation or <code>[SEP]</code> (so-called &ldquo;null&rdquo; heads that effectively opt out). Nobody
+designed this; it emerges from training.</p>
+<h3 id="the-three-flavours-of-attention">The three flavours of attention<a class="headerlink" href="#the-three-flavours-of-attention" title="Permanent link">&para;</a></h3>
+<p>You must be able to distinguish these, because questions routinely test them:</p>
 <table>
 <thead>
 <tr>
 <th>Type</th>
-<th>Where</th>
+<th>Where it appears</th>
 <th>What attends to what</th>
 </tr>
 </thead>
@@ -2941,67 +3608,239 @@ attention patterns computed at the same cost.</p>
 <tr>
 <td><strong>Self-attention (bidirectional)</strong></td>
 <td>Encoder</td>
-<td>Every token ↔ every token, both directions</td>
+<td>Every token ↔ every token, both directions. <code>Q</code>, <code>K</code>, <code>V</code> all come from the same sequence</td>
 </tr>
 <tr>
 <td><strong>Masked (causal) self-attention</strong></td>
 <td>Decoder</td>
-<td>Token <em>i</em> attends only to tokens ≤ <em>i</em></td>
+<td>Token <em>i</em> attends only to tokens ≤ <em>i</em>. <code>Q</code>, <code>K</code>, <code>V</code> all from the same sequence, plus the mask</td>
 </tr>
 <tr>
 <td><strong>Cross-attention</strong></td>
-<td>Encoder–decoder</td>
-<td>Decoder queries attend to <strong>encoder</strong> keys/values</td>
+<td>Encoder–decoder bridge</td>
+<td><code>Q</code> comes from the <strong>decoder</strong>; <code>K</code> and <code>V</code> come from the <strong>encoder</strong> output</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Why the causal mask exists</p>
-<p>Without it, a decoder predicting token <em>i</em> could simply look at token <em>i</em> in the
-input — it would learn nothing. The mask makes next-token prediction a genuine
-prediction task.</p>
-</div>
-<h2 id="positional-encoding">Positional encoding<a class="headerlink" href="#positional-encoding" title="Permanent link">&para;</a></h2>
-<p>Attention is <strong>permutation-invariant</strong>: shuffle the input and the attention math is
-unchanged. Word order therefore has to be injected explicitly.</p>
-<ul>
-<li><strong>Sinusoidal</strong> (original paper) — fixed sine/cosine functions of varying frequency,
-  added to the token embeddings. No parameters; extrapolates to unseen lengths.</li>
-<li><strong>Learned absolute</strong> — a trainable embedding per position (BERT, GPT-2).</li>
-<li><strong>RoPE (rotary)</strong> — rotates Q and K by a position-dependent angle; encodes <em>relative</em>
-  position and generalises better to long contexts. Used in Llama and most modern LLMs.</li>
-<li><strong>ALiBi</strong> — adds a linear distance penalty to attention scores.</li>
-</ul>
-<h2 id="the-transformer-block">The transformer block<a class="headerlink" href="#the-transformer-block" title="Permanent link">&para;</a></h2>
-<p>Each layer is two sub-layers, each wrapped in a residual connection and layer
-normalization:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>x ──►[ LayerNorm ]──►[ Multi-Head Attention ]──►(+)──┐
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                                                    │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>└────────────────── residual ────────────────────────┘
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                       │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                       ▼
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>x ──►[ LayerNorm ]──►[ Feed-Forward Network ]──►(+)──► output
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│                                                    │
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>└────────────────── residual ────────────────────────┘
+<p>Cross-attention is the mechanism by which a translation model looks back at the source
+sentence while generating the target. The decoder asks the question; the encoder&rsquo;s
+representation supplies the answer.</p>
+<hr />
+<h2 id="7-positional-encoding-because-attention-is-blind-to-order">7. Positional encoding — because attention is blind to order<a class="headerlink" href="#7-positional-encoding-because-attention-is-blind-to-order" title="Permanent link">&para;</a></h2>
+<p>Here is a property of attention that surprises people: <strong>it does not know what order the
+tokens are in.</strong></p>
+<p>Look back at the worked example. The output for token 1 was <code>0.401·v₁ + 0.198·v₂ + 0.401·v₃</code>.
+Now shuffle tokens 2 and 3 in the input. The scores get computed against the same set of keys,
+just in a different order; the softmax produces the same weights attached to the same tokens;
+the weighted sum is the same numbers added in a different order — and addition is commutative.
+<strong>The output is identical.</strong></p>
+<p>Formally, attention is <em>permutation-equivariant</em>: permute the input rows and you permute the
+output rows, but nothing about the content changes. To attention, a sentence is a <strong>bag of
+tokens</strong>, not a sequence. &ldquo;Dog bites man&rdquo; and &ldquo;man bites dog&rdquo; are the same input.</p>
+<p>Since we deleted the recurrence — which was where order information used to live — we must put
+order back in explicitly. The solution is to <strong>add a position-dependent vector to each token
+embedding</strong> before the first layer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>input to layer 1  =  token embedding  +  positional encoding
 </code></pre></div>
+<h3 id="sinusoidal-encoding-the-original-paper">Sinusoidal encoding (the original paper)<a class="headerlink" href="#sinusoidal-encoding-the-original-paper" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[ PE_{(pos,\,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d_{model}}}\right) \qquad PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d_{model}}}\right) \]</div>
+<p>That looks arbitrary. It is not. Read it as a <strong>binary counter made of sine waves</strong>.</p>
+<p>Each pair of dimensions oscillates at a different frequency. The lowest dimensions have a
+wavelength of about 2π — they cycle every few positions, encoding fine-grained local position,
+like the low-order bit of a binary number. The highest dimensions have a wavelength of about
+<code>10000 · 2π</code> — they barely change across an entire document, encoding coarse global position,
+like the high-order bit.</p>
+<p>Read together, the full vector of sines and cosines specifies a position uniquely, the same
+way the bits <code>0110</code> uniquely specify 6.</p>
+<p>Two properties made this the original choice:</p>
 <ul>
-<li><strong>Feed-forward network (FFN)</strong> — two linear layers with a non-linearity between them,
-  applied <strong>position-wise</strong> and identically to every token. Its inner dimension is
-  typically <strong>4× <code>d_model</code></strong>. Most of a transformer&rsquo;s parameters live here.</li>
-<li><strong>Residual connections</strong> — allow gradients to flow directly through deep stacks.</li>
-<li><strong>Layer normalization</strong> — placed <em>before</em> the sub-layer in modern models
-  (<strong>pre-LN</strong>, more stable to train) rather than after (<strong>post-LN</strong>, as in the original paper).</li>
+<li><strong>No parameters.</strong> Nothing to learn, and it extrapolates to sequence lengths never seen
+  during training — position 5,000 has a well-defined encoding even if training only went to
+  512.</li>
+<li><strong>Relative position is linearly accessible.</strong> Because of the sine and cosine addition
+  formulas, <code>PE(pos + k)</code> can be written as a fixed linear transformation (a rotation) of
+  <code>PE(pos)</code>. The model can therefore learn to attend by <em>relative offset</em> — &ldquo;three tokens
+  back&rdquo; — using a linear operation, which is exactly the kind of thing a weight matrix can
+  represent.</li>
 </ul>
-<p>The original architecture: 6 encoder layers + 6 decoder layers, <code>d_model</code> = 512,
-8 heads, FFN dim 2048.</p>
-<h2 id="three-architecture-families">Three architecture families<a class="headerlink" href="#three-architecture-families" title="Permanent link">&para;</a></h2>
+<h3 id="the-alternatives-you-should-recognise">The alternatives you should recognise<a class="headerlink" href="#the-alternatives-you-should-recognise" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Scheme</th>
+<th>How it works</th>
+<th>Where you meet it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Learned absolute</strong></td>
+<td>A trainable embedding per position, added like a token embedding</td>
+<td>BERT, GPT-2. Simple; cannot extrapolate past the trained maximum length</td>
+</tr>
+<tr>
+<td><strong>RoPE (rotary)</strong></td>
+<td><strong>Rotates</strong> <code>q</code> and <code>k</code> by an angle proportional to position, instead of adding anything</td>
+<td>Llama, Mistral, most modern LLMs</td>
+</tr>
+<tr>
+<td><strong>ALiBi</strong></td>
+<td>Adds a linear penalty to attention scores proportional to distance</td>
+<td>Some long-context models</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RoPE deserves a moment</strong>, because it is what almost every current model uses and it appears
+in questions. Rather than adding a position vector to the input, it rotates the query and key
+vectors in 2-D subspaces by an angle <code>θ · position</code>. The mathematical payoff is that the dot
+product between a rotated query at position <em>m</em> and a rotated key at position <em>n</em> depends
+<strong>only on their difference <code>m − n</code></strong>, not on their absolute values. Relative position falls out
+of the geometry for free, and the encoding degrades gracefully at lengths beyond training —
+which is why RoPE models can be context-extended and absolute-embedding models largely cannot.</p>
+<hr />
+<h2 id="8-the-transformer-block-layer-by-layer">8. The transformer block, layer by layer<a class="headerlink" href="#8-the-transformer-block-layer-by-layer" title="Permanent link">&para;</a></h2>
+<p>A transformer is a stack of identical blocks. Each block has exactly two sub-layers, and each
+sub-layer is wrapped in the same two things: a residual connection and a layer normalization.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>        x ─────────────────────────────┐
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>        │                              │ residual
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        ▼                              │
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>   [ LayerNorm ]                       │
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        │                              │
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        ▼                              │
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>[ Multi-Head Attention ]               │
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        │                              │
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        ▼                              │
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>       (+) ◄───────────────────────────┘
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        │
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        ├─────────────────────────────┐
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>        ▼                             │ residual
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>   [ LayerNorm ]                      │
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>        │                             │
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>        ▼                             │
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>[ Feed-Forward Network ]              │
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>        │                             │
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        ▼                             │
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>       (+) ◄──────────────────────────┘
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>        │
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>        ▼
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>     output
+</code></pre></div>
+<h3 id="the-feed-forward-network-where-most-of-the-parameters-live">The feed-forward network — where most of the parameters live<a class="headerlink" href="#the-feed-forward-network-where-most-of-the-parameters-live" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[ \text{FFN}(x) = W_2 \cdot \text{GELU}(W_1 x + b_1) + b_2 \]</div>
+<p>Two linear layers with a non-linearity between them, applied <strong>independently and identically
+to every token position</strong>. The inner dimension is conventionally <strong>4× <code>d_model</code></strong> — so for
+<code>d_model = 512</code>, the FFN expands to 2048 and projects back to 512.</p>
+<p>Two questions worth answering properly.</p>
+<p><strong>What is it actually for?</strong> Attention <em>moves information between tokens</em>. It is fundamentally
+a weighted average — it cannot compute new features, only mix existing ones. The FFN
+<em>transforms information within a token</em>, and it is the only place in the block with substantial
+non-linear processing capacity. A useful framing from the interpretability literature is that
+the FFN behaves like a <strong>key–value memory</strong>: the rows of <code>W₁</code> act as pattern detectors that
+fire on particular input features, and the corresponding columns of <code>W₂</code> are the content
+written back when they fire. Much of a model&rsquo;s factual knowledge appears to live here.</p>
+<p><strong>How big is it?</strong> Per layer, attention uses four <code>d × d</code> matrices (<code>W^Q</code>, <code>W^K</code>, <code>W^V</code>, <code>W^O</code>)
+for <code>4d²</code> parameters, and the FFN uses <code>d × 4d</code> and <code>4d × d</code> for <code>8d²</code>. Total ≈ <strong>12d² per
+layer</strong>, of which <strong>two thirds are in the feed-forward network</strong>. When you read that a model&rsquo;s
+weights are dominated by its FFNs, this is the arithmetic behind it.</p>
+<h3 id="residual-connections-what-makes-depth-possible">Residual connections — what makes depth possible<a class="headerlink" href="#residual-connections-what-makes-depth-possible" title="Permanent link">&para;</a></h3>
+<p>The <code>(+)</code> in the diagram is <code>output = SubLayer(x) + x</code>. The input is added back to the output.</p>
+<p>This looks trivial and is one of the most important ideas in deep learning. Without it,
+gradients flowing backward through 96 layers get multiplied by 96 Jacobians and vanish. With
+it, there is a direct additive path from the loss all the way back to layer 1 — the gradient
+can flow through the <code>+ x</code> branch essentially unattenuated.</p>
+<p>There is a second, more conceptual benefit. Because each block <em>adds</em> to its input rather than
+replacing it, the model maintains what is often called a <strong>residual stream</strong>: a running
+representation that each layer reads from and writes small updates into. A block only has to
+learn a <em>refinement</em>, not a full transformation, which is a much easier learning problem.</p>
+<h3 id="layer-normalization-and-why-not-batch-normalization">Layer normalization — and why not batch normalization<a class="headerlink" href="#layer-normalization-and-why-not-batch-normalization" title="Permanent link">&para;</a></h3>
+<p>Layer norm normalises each token&rsquo;s vector to zero mean and unit variance <strong>across its own
+features</strong>, then applies a learned scale and shift.</p>
+<p>Why not batch normalization, which is standard in vision? Batch norm computes statistics
+<strong>across the batch dimension</strong> — the mean of feature 3 over all examples in the batch. That
+creates two problems for text. First, sequences have <strong>variable length</strong>, so the number of
+real values contributing to each position&rsquo;s statistics differs and padding contaminates them.
+Second, it makes each example&rsquo;s output <strong>depend on the other examples in its batch</strong>, and it
+behaves differently at inference (where you use stored running statistics, and batch size may
+be 1). Layer norm computes statistics within a single token vector, so it is completely
+independent of batch size and sequence length, and behaves identically in training and
+inference.</p>
+<p><strong>Pre-LN vs. post-LN</strong> is worth knowing. The original paper put the normalization <em>after</em> the
+sub-layer and residual addition (<code>LayerNorm(x + SubLayer(x))</code>). Modern models put it <em>before</em>
+(<code>x + SubLayer(LayerNorm(x))</code>), as drawn above. Pre-LN keeps the residual path completely
+clean — no normalization sits on it — which makes very deep stacks trainable without a
+carefully tuned learning-rate warmup. Almost every model since around 2020 uses pre-LN.</p>
+<h3 id="the-original-configuration">The original configuration<a class="headerlink" href="#the-original-configuration" title="Permanent link">&para;</a></h3>
+<p>For reference, the 2017 paper&rsquo;s base model: 6 encoder layers, 6 decoder layers,
+<code>d_model = 512</code>, 8 attention heads (so <code>d_k = 64</code>), FFN inner dimension 2048, ~65M parameters.
+Modern LLMs keep the identical block and scale the numbers: a 70B model might use 80 layers,
+<code>d_model = 8192</code>, 64 heads.</p>
+<hr />
+<h2 id="9-from-text-to-prediction-the-full-pipeline">9. From text to prediction — the full pipeline<a class="headerlink" href="#9-from-text-to-prediction-the-full-pipeline" title="Permanent link">&para;</a></h2>
+<p>Putting it together, here is everything that happens when a decoder-only LLM produces one
+token.</p>
+<p><strong>1. Tokenization.</strong> Text is split into subword units by a learned algorithm.</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Used by</th>
+<th>Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BPE</strong> (Byte-Pair Encoding)</td>
+<td>GPT family</td>
+<td>Start from characters, repeatedly merge the most frequent adjacent pair</td>
+</tr>
+<tr>
+<td><strong>WordPiece</strong></td>
+<td>BERT</td>
+<td>Similar, but merges are chosen to maximise training-data likelihood</td>
+</tr>
+<tr>
+<td><strong>SentencePiece / Unigram</strong></td>
+<td>Multilingual models, Llama</td>
+<td>Operates on raw bytes with no whitespace assumption — essential for languages without spaces</td>
+</tr>
+</tbody>
+</table>
+<p>Subwords are the compromise between two bad extremes. Word-level vocabularies are enormous and
+break completely on unseen words. Character-level vocabularies are tiny but produce very long
+sequences, and attention is O(n²). Subwords keep the vocabulary fixed (typically 32k–256k) while
+still being able to spell <strong>any</strong> input by decomposing it — so there is no true
+out-of-vocabulary problem.</p>
+<div class="admonition note">
+<p class="admonition-title">The ratio worth remembering</p>
+<p>Roughly <strong>1 token ≈ 0.75 English words ≈ 4 characters</strong>. This is what you use for cost and
+context-window estimates. Non-English text and code tokenize less efficiently, sometimes
+much less.</p>
+</div>
+<p><strong>2. Embedding lookup.</strong> Each token id indexes into an embedding matrix of shape
+<code>vocab_size × d_model</code>, producing a dense vector.</p>
+<p><strong>3. Add positional information.</strong> Either added to the embedding (sinusoidal/learned) or
+applied inside attention at every layer (RoPE).</p>
+<p><strong>4. N transformer blocks.</strong> The representation is refined layer by layer.</p>
+<p><strong>5. Output head.</strong> A final linear projection from <code>d_model</code> to <code>vocab_size</code> produces
+<strong>logits</strong> — one raw score per vocabulary entry. This matrix is often <em>tied</em> to the input
+embedding matrix (the same weights, transposed) to save parameters.</p>
+<p><strong>6. Softmax and sample.</strong> Logits become a probability distribution; a token is chosen from it
+according to the decoding parameters — temperature, top-k, top-p. See
+<a href="../prompt-engineering/#6-decoding-parameters">Prompt Engineering</a>.</p>
+<p><strong>7. Append and repeat.</strong> The chosen token is appended to the input and the whole thing runs
+again. This is <strong>autoregressive decoding</strong>, and it is why generating 500 tokens costs roughly
+500 forward passes.</p>
+<hr />
+<h2 id="10-three-architecture-families-and-why-each-is-good-at-what-it-is-good-at">10. Three architecture families, and why each is good at what it is good at<a class="headerlink" href="#10-three-architecture-families-and-why-each-is-good-at-what-it-is-good-at" title="Permanent link">&para;</a></h2>
+<p>This mapping produces more exam questions than almost anything else, so it is worth
+understanding causally rather than memorising.</p>
 <table>
 <thead>
 <tr>
 <th>Family</th>
 <th>Attention</th>
 <th>Pretraining objective</th>
-<th>Best at</th>
+<th>Good at</th>
 <th>Examples</th>
 </tr>
 </thead>
@@ -3009,78 +3848,122 @@ normalization:</p>
 <tr>
 <td><strong>Encoder-only</strong></td>
 <td>Bidirectional</td>
-<td><strong>Masked language modeling</strong> (predict masked tokens)</td>
-<td><em>Understanding</em>: classification, NER, embeddings, extractive QA</td>
-<td>BERT, RoBERTa, DeBERTa, embedding models</td>
+<td><strong>Masked language modeling</strong></td>
+<td>Understanding: classification, NER, <strong>embeddings</strong>, extractive QA</td>
+<td>BERT, RoBERTa, DeBERTa, most embedding models</td>
 </tr>
 <tr>
 <td><strong>Decoder-only</strong></td>
-<td>Causal/masked</td>
-<td><strong>Next-token prediction</strong> (autoregressive)</td>
-<td><em>Generation</em>: chat, completion, summarization, code</td>
-<td>GPT family, Llama, Mistral, Nemotron</td>
+<td>Causal</td>
+<td><strong>Next-token prediction</strong></td>
+<td>Generation: chat, completion, summarization, code</td>
+<td>GPT, Llama, Mistral, Nemotron</td>
 </tr>
 <tr>
-<td><strong>Encoder–decoder (seq2seq)</strong></td>
-<td>Both + cross-attention</td>
+<td><strong>Encoder–decoder</strong></td>
+<td>Both, plus cross-attention</td>
 <td>Span corruption / denoising</td>
-<td>Transduction: translation, summarization</td>
-<td>T5, BART, original transformer</td>
+<td>Transduction: translation, seq2seq summarization</td>
+<td>T5, BART, the original transformer</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Why bidirectional attention makes better representations.</strong> To build a vector that captures
+what a sentence <em>means</em>, you want every token informed by full context in both directions. In
+&ldquo;I went to the <strong>bank</strong> to deposit a cheque&rdquo;, the disambiguating evidence (&ldquo;deposit&rdquo;, &ldquo;cheque&rdquo;)
+comes <em>after</em> the ambiguous word. An encoder sees it; a causal decoder at that position cannot.
+This is why embedding models are overwhelmingly encoders.</p>
+<p><strong>Why causal attention is required for generation.</strong> As section 5 established, a model that can
+see the future cannot be trained to predict it. Generation demands the mask, and the mask
+costs you bidirectional context. That is the trade.</p>
+<p><strong>Why encoder–decoder for translation.</strong> The source sentence should be encoded bidirectionally
+— you want full understanding of the input before producing anything — while the output must be
+generated causally. Encoder–decoder gives you both, joined by cross-attention.</p>
 <div class="admonition tip">
-<p class="admonition-title">Highest-yield mapping on the whole exam</p>
+<p class="admonition-title">The mapping to internalise</p>
 <ul>
-<li>Need to <strong>classify, tag, or embed</strong> text → <strong>encoder</strong> model.</li>
-<li>Need to <strong>generate</strong> text → <strong>decoder</strong> model.</li>
-<li>Need to map one sequence to another (translation) → <strong>encoder–decoder</strong>.</li>
+<li>Classify, tag, or <strong>embed</strong> text → <strong>encoder</strong></li>
+<li><strong>Generate</strong> text → <strong>decoder</strong></li>
+<li>Map one sequence to another (translation) → <strong>encoder–decoder</strong></li>
 </ul>
-<p>NVIDIA&rsquo;s own course objective phrases it as: <em>&ldquo;use encoder models for semantic
-analysis, embedding, question-answering and zero-shot classification&rdquo;</em> and <em>&ldquo;work
-with conditioned decoder-style models to generate data formats, styles and modalities.&rdquo;</em></p>
+<p>NVIDIA phrases this in its own course objectives as <em>&ldquo;use encoder models for semantic
+analysis, embedding, question-answering and zero-shot classification&rdquo;</em> and <em>&ldquo;work with
+conditioned decoder-style models to take in and generate interesting data formats, styles
+and modalities.&rdquo;</em> Recognising that language is worth a mark or two.</p>
 </div>
-<h2 id="from-tokens-to-output">From tokens to output<a class="headerlink" href="#from-tokens-to-output" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="11-the-cost-of-attention-and-everything-built-to-reduce-it">11. The cost of attention, and everything built to reduce it<a class="headerlink" href="#11-the-cost-of-attention-and-everything-built-to-reduce-it" title="Permanent link">&para;</a></h2>
+<p>Return to that <code>n × n</code> score matrix. For a sequence of <code>n</code> tokens, attention computes and
+stores n² scores. <strong>Self-attention is O(n²) in sequence length</strong>, in both compute and memory.</p>
+<p>Concretely: doubling the context from 4k to 8k tokens does not double attention cost — it
+<strong>quadruples</strong> it. This single fact drives an enormous amount of engineering, and it is why
+long context is expensive rather than merely inconvenient.</p>
+<h3 id="the-kv-cache">The KV cache<a class="headerlink" href="#the-kv-cache" title="Permanent link">&para;</a></h3>
+<p>During generation there is a huge amount of redundant work. To produce token 101, the model
+needs the keys and values of tokens 1–100 — which it already computed when producing token 100.
+Recomputing them every step makes generating an <code>n</code>-token sequence O(n³) overall.</p>
+<p>The fix is to <strong>cache</strong> the K and V tensors for all previous positions. Each new token then
+only computes its own <code>q</code>, <code>k</code>, <code>v</code>, appends to the cache, and attends over it. Generation
+drops to O(n) per step.</p>
+<p>This is not optional in any real serving stack, and the memory cost is substantial enough that
+you should be able to estimate it:</p>
+<div class="arithmatex">\[ \text{KV cache bytes} = 2 \times \text{layers} \times \text{seq len} \times \text{kv heads} \times \text{head dim} \times \text{batch} \times \text{bytes per value} \]</div>
+<p>The leading 2 is for K and V. Work through a real example — Llama-2-7B in FP16, which has 32
+layers, 32 attention heads and head dimension 128:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>per token, per layer:  2 × 32 heads × 128 dims × 2 bytes  =  16,384 bytes  =  16 KB
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>per token, all layers: 16 KB × 32 layers                  =  512 KB
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>for a 4,096-token context:  512 KB × 4,096               ≈  2 GB
+</code></pre></div>
+<p><strong>2 GB of KV cache for a single 4k-token conversation</strong> — against 14 GB for the model weights
+themselves. Now serve 16 concurrent users and the cache needs 32 GB, more than double the
+weights. This is why the KV cache, not the model, is usually what limits how many users a GPU
+can serve.</p>
+<h3 id="the-optimizations-you-should-recognise-by-name">The optimizations you should recognise by name<a class="headerlink" href="#the-optimizations-you-should-recognise-by-name" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Multi-query attention (MQA) / grouped-query attention (GQA)</strong> — all heads (MQA) or groups
+  of heads (GQA) <em>share</em> one set of K/V projections. Queries stay independent, so most of the
+  expressiveness is retained, but the KV cache shrinks by the sharing factor. Rerun the
+  calculation above with 8 KV heads instead of 32 and the cache drops from 2 GB to <strong>512 MB</strong>.
+  Standard in every modern LLM.</li>
+<li><strong>FlashAttention</strong> — computes exactly the same result, but reorders the computation into
+  tiles that fit in the GPU&rsquo;s fast on-chip SRAM, so the <code>n × n</code> matrix is never written to
+  slow HBM at all. Same math, dramatically less memory traffic, and memory that scales linearly
+  rather than quadratically.</li>
+<li><strong>PagedAttention</strong> — manages the KV cache in fixed-size blocks like operating-system virtual
+  memory, eliminating fragmentation and allowing far larger batches. The core idea in vLLM.</li>
+<li><strong>Sparse / linear attention</strong> — approximations (Longformer, BigBird, Performer) that attend
+  to a subset of positions, trading exactness for sub-quadratic scaling.</li>
+<li><strong>Mixture of Experts (MoE)</strong> — replaces the FFN with many expert FFNs and routes each token
+  to only a couple of them. Total parameters are huge; <em>active</em> parameters per token stay
+  small, so quality scales with total size while cost scales with active size.</li>
+</ul>
+<hr />
+<h2 id="12-recap">12. Recap<a class="headerlink" href="#12-recap" title="Permanent link">&para;</a></h2>
+<p>The chain of reasoning, end to end:</p>
 <ol>
-<li><strong>Tokenization</strong> — text → subword tokens. Algorithms: <strong>BPE</strong> (GPT), <strong>WordPiece</strong>
-   (BERT), <strong>SentencePiece/Unigram</strong> (multilingual, whitespace-agnostic). Subwords give a
-   fixed vocabulary that can still spell any word, and handle out-of-vocabulary terms by
-   decomposition.</li>
-<li><strong>Embedding lookup</strong> — each token id → a dense vector of size <code>d_model</code>.</li>
-<li><strong>+ positional encoding</strong>.</li>
-<li><strong>N transformer blocks</strong>.</li>
-<li><strong>Output head</strong> — a linear projection to vocabulary size → <strong>logits</strong>.</li>
-<li><strong>Softmax + sampling</strong> → next token. Append and repeat (<strong>autoregressive decoding</strong>).</li>
+<li>RNNs failed for two reasons: information degraded over long distances (vanishing gradients),
+   and sequential processing could not use GPU parallelism.</li>
+<li><strong>Attention</strong> replaces recurrence with a direct, learned, weighted lookup: every token can
+   reach every other token in one step. <code>softmax(QKᵀ/√d_k)V</code>.</li>
+<li><strong>Q, K, V</strong> are three learned projections of the same input: what I seek, what I advertise,
+   what I contribute.</li>
+<li><strong><code>√d_k</code></strong> keeps score variance constant so softmax does not saturate and gradients keep
+   flowing.</li>
+<li>The <strong>causal mask</strong> stops a decoder from reading the answer it is being trained to predict.
+   It is the single difference that separates BERT-style from GPT-style models.</li>
+<li><strong>Multi-head</strong> attention learns several relationship patterns in parallel, at no extra
+   parameter cost.</li>
+<li><strong>Positional encodings</strong> are mandatory because attention is order-blind. Sinusoidal,
+   learned, or — in modern models — <strong>RoPE</strong>, which encodes relative position by rotation.</li>
+<li>Each block is <strong>attention + FFN</strong>, each wrapped in a <strong>residual connection</strong> (makes depth
+   trainable) and <strong>layer normalization</strong> (batch-size independent, unlike batch norm). The FFN
+   holds about two thirds of the parameters.</li>
+<li><strong>Encoder = understanding and embeddings. Decoder = generation. Encoder–decoder =
+   transduction.</strong> This follows directly from bidirectional vs. causal attention.</li>
+<li>Attention is <strong>O(n²)</strong>, which makes long context expensive; the <strong>KV cache</strong> makes
+    generation tractable but often dominates serving memory, which is why GQA, FlashAttention
+    and PagedAttention exist.</li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Rule of thumb</p>
-<p>~1 token ≈ 0.75 English words ≈ 4 characters. Useful for cost and context-window
-estimates.</p>
-</div>
-<h2 id="scaling-and-efficiency-vocabulary">Scaling and efficiency vocabulary<a class="headerlink" href="#scaling-and-efficiency-vocabulary" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>KV cache</strong> — during generation, cache the K and V tensors of previous tokens so each
-  new token costs O(n) instead of re-running O(n²). Trades memory for speed; the cache
-  is often the dominant memory consumer at inference.</li>
-<li><strong>Multi-query (MQA) / grouped-query attention (GQA)</strong> — heads share K/V projections,
-  shrinking the KV cache dramatically. Standard in modern LLMs.</li>
-<li><strong>FlashAttention</strong> — an IO-aware exact attention kernel that avoids materialising the
-  n×n matrix in HBM. Same math, far less memory traffic.</li>
-<li><strong>Mixture of Experts (MoE)</strong> — replace the FFN with many experts and route each token
-  to a few. Large total parameter count, small <em>active</em> parameter count per token.</li>
-<li><strong>Sparse / linear attention</strong> — approximations that reduce the O(n²) term.</li>
-</ul>
-<h2 id="key-takeaways">Key takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Attention lets every token attend to every other token in parallel; that is the whole
-  reason transformers beat RNNs.</li>
-<li><code>softmax(QKᵀ/√d_k)V</code> — know each symbol, and know that <code>√d_k</code> prevents softmax
-  saturation.</li>
-<li>Multi-head attention = several attention patterns learned in parallel.</li>
-<li>Positional encodings are required because attention alone is order-blind.</li>
-<li>Encoder = understanding/embeddings, decoder = generation, encoder–decoder = transduction.</li>
-<li>Self-attention is <strong>O(n²)</strong> in sequence length — the root cause of context-length cost.</li>
-</ul>
 
 
 
