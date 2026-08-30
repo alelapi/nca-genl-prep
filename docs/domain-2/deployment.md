@@ -1,145 +1,275 @@
 # Deployment & Serving
 
-*Covers tasks 1.1 / 4.1 (assist in deployment and evaluation of model scalability,
-performance and reliability) and 4.5 (monitor functioning of data collection, experiments
-and other software processes).*
+*Covers tasks 1.1 / 4.1 ("assist in deployment and evaluation of model scalability, performance
+and reliability") and 4.5 ("monitor functioning of data collection, experiments and other
+software processes").*
 
-## The three qualities the blueprint names
+---
 
-The task statement is precise — **scalability, performance and reliability** — and each
-maps to concrete practice.
+## 1. The three qualities the blueprint names
 
-| Quality | Question it answers | Levers |
+The task statement is unusually precise — **scalability, performance and reliability** — and
+each maps to concrete engineering.
+
+| Quality | The question it answers | Levers |
 | --- | --- | --- |
 | **Scalability** | Does it hold up as load grows? | Horizontal replicas, autoscaling, batching, load balancing, multi-GPU parallelism |
 | **Performance** | Is it fast and efficient enough? | Latency (TTFT/TPOT), throughput, GPU utilisation, quantization, TensorRT |
-| **Reliability** | Does it keep working? | Health checks, retries with backoff, timeouts, circuit breakers, fallback models, graceful degradation, canary rollouts |
+| **Reliability** | Does it keep working when things go wrong? | Health checks, timeouts, retries, circuit breakers, fallbacks, graceful degradation, canary rollouts |
 
-## NVIDIA Triton Inference Server
+These are genuinely different properties, and a system can be excellent at one and terrible at
+another. A deployment that serves 10,000 requests per second (scalable) with a p99 latency of 30
+seconds (not performant) that falls over when the vector database hiccups (not reliable) has
+solved exactly one third of the problem.
 
-The serving layer of the NVIDIA stack.
+---
 
-- **Multi-framework**: TensorRT, PyTorch (TorchScript), TensorFlow, ONNX Runtime, Python,
-  OpenVINO — one server, many backends.
-- **Dynamic batching**: combines individual requests into batches server-side, with a
-  configurable max delay. Large throughput gains for free.
-- **Concurrent model execution**: multiple models, or multiple instances of one model, on
-  the same GPU.
-- **Model repository + versioning**: load, unload and hot-swap model versions without
-  restarting.
-- **Model ensembles / business-logic scripting**: chain preprocessing → model →
-  postprocessing inside the server.
-- **HTTP/REST and gRPC endpoints**, plus a C API.
-- **Prometheus metrics** out of the box: request counts, latency percentiles, queue time,
-  GPU utilisation.
-- Runs on Kubernetes, in the cloud, on-prem, or at the edge.
+## 2. NVIDIA Triton Inference Server
 
-## NVIDIA NIM
+The serving layer of the NVIDIA stack, and the answer to any question about **hosting** models
+in production.
 
-**NVIDIA Inference Microservices** — prebuilt containers that package an optimized model
-plus its runtime behind a **standard, OpenAI-compatible API**.
+**What it does:**
 
-Why it appears on the exam: it is the "deploy quickly, anywhere, without doing the
-optimization yourself" answer. NIM containers include TensorRT-LLM engines tuned for the
-target GPU, and run in your own cloud, data centre or workstation — so data never leaves
-your control.
+- **Multi-framework.** TensorRT, PyTorch (TorchScript), TensorFlow, ONNX Runtime, OpenVINO and
+  Python backends — one server, many model types. This matters operationally: you run one piece
+  of infrastructure instead of a different serving stack per framework.
+- **Dynamic batching.** Triton combines individual requests arriving close together into a batch
+  server-side, transparently to clients. Given that inference is
+  [memory-bandwidth bound](inference-optimization.md), this is a large throughput gain for
+  essentially no effort.
+- **Concurrent model execution.** Multiple models, or multiple instances of the same model, on
+  one GPU — so a small model does not leave the GPU idle.
+- **Model repository and versioning.** Load, unload and hot-swap versions without restarting the
+  server. Version policies let you serve v1 and v2 simultaneously, which is what makes canary
+  and A/B deployments practical.
+- **Model ensembles and business-logic scripting.** Chain preprocessing → model →
+  postprocessing inside the server, so the client sends raw input and receives a final answer,
+  with no network hop between stages.
+- **HTTP/REST and gRPC endpoints**, plus a C API for embedding.
+- **Prometheus metrics** out of the box: request counts, latency percentiles, **queue time**,
+  batch sizes, GPU utilisation.
+- Runs on Kubernetes, in the cloud, on-premises, or at the edge.
 
-## NeMo Framework
+That "queue time" metric is more useful than it sounds — it separates *"the model is slow"* from
+*"the model is fine but requests are waiting"*, which are completely different problems with
+completely different fixes.
 
-NVIDIA's end-to-end framework for **building and customizing** generative AI models —
-the step *before* serving:
+---
 
-- **Data curation** (with NeMo Curator), **pretraining**, **SFT**, **PEFT/LoRA**,
-  **alignment**, **evaluation**, and **export/deploy** to TensorRT-LLM and Triton.
-- Built on PyTorch; uses **Megatron-LM** for large-scale distributed training.
-- Companion products: **NeMo Guardrails** (safety and topic rails), **NeMo Retriever**
-  (embedding and reranking microservices for RAG), **NeMo Evaluator**.
+## 3. NVIDIA NIM
 
-!!! tip "Product mapping cheat sheet"
+**NVIDIA Inference Microservices** — prebuilt containers packaging an optimized model plus its
+runtime behind a **standard, OpenAI-compatible API**.
+
+The reasoning behind it: getting peak inference performance out of a given model on a given GPU
+requires TensorRT-LLM engine building, quantization calibration, batching configuration and
+kernel tuning. That is specialist work, it must be redone per model and per GPU, and most teams
+should not be doing it. NIM ships the result pre-built.
+
+Why it appears on the exam: it is the answer to *"deploy an optimized model quickly, anywhere,
+without doing the optimization work yourself"*. And because it runs **in your own cloud, data
+centre or workstation**, data never leaves your perimeter — which is often the deciding factor
+for regulated industries.
+
+---
+
+## 4. NeMo Framework
+
+NVIDIA's end-to-end framework for **building and customizing** models — the step *before*
+serving.
+
+Covers **data curation** (with NeMo Curator), **pretraining**, **SFT**, **PEFT/LoRA**,
+**alignment**, **evaluation**, and **export** to TensorRT-LLM and Triton. Built on PyTorch, using
+**Megatron-LM** underneath for large-scale distributed training.
+
+The companion products:
+
+- **NeMo Curator** — data curation and deduplication at scale
+- **NeMo Guardrails** — safety and topic rails, see [Domain 5](../domain-5/guardrails-security.md)
+- **NeMo Retriever** — embedding and reranking microservices for RAG
+- **NeMo Evaluator** — model and RAG evaluation
+
+!!! tip "The product map — likely free marks"
     | Need | Product |
     | --- | --- |
-    | Curate and dedupe a training corpus | **NeMo Curator** |
-    | Pretrain / fine-tune / align a model | **NeMo Framework** (Megatron-LM underneath) |
+    | Curate, dedupe, PII-strip a training corpus | **NeMo Curator** |
+    | Pretrain, fine-tune or align a model | **NeMo Framework** (Megatron-LM underneath) |
     | Optimize an LLM for inference | **TensorRT-LLM** (TensorRT for general DL models) |
     | Serve models in production | **Triton Inference Server** |
-    | Deploy a ready-made optimized endpoint fast | **NIM** |
+    | Deploy a ready-optimized endpoint fast | **NIM** |
     | Add safety/topic rails to an LLM app | **NeMo Guardrails** |
-    | Embeddings + reranking for RAG | **NeMo Retriever** |
+    | Embeddings and reranking for RAG | **NeMo Retriever** |
     | GPU-accelerated dataframes and classical ML | **RAPIDS** (cuDF, cuML, cuGraph) |
+    | Multi-GPU collective communication | **NCCL** |
 
-## Deployment patterns
+    And the pair most often swapped in distractors: **TensorRT optimizes; Triton serves.**
 
-- **Blue/green** — run the new version alongside the old, switch traffic atomically,
-  roll back instantly.
-- **Canary** — send 1–5% of traffic to the new version, watch metrics, ramp gradually.
-- **Shadow (mirroring)** — send a copy of production traffic to the new model without
-  returning its responses. Zero user risk; excellent for validating a new model on real
-  inputs.
-- **A/B test** — split traffic deliberately to compare outcome metrics. See
-  [Experiment Design](../domain-3/experiment-design.md).
+---
 
-**Autoscaling** for GPU inference is different from stateless web services: model loading
-takes tens of seconds to minutes, so scale on **queue depth / batch saturation**, keep a
-warm pool, and set generous scale-down cooldowns.
+## 5. Deployment patterns
 
-## Monitoring and observability (task 4.5)
+| Pattern | How it works | Best for |
+| --- | --- | --- |
+| **Blue/green** | Run the new version alongside the old, switch all traffic at once | Instant rollback; needs double the capacity briefly |
+| **Canary** | Route 1–5% of traffic to the new version, watch metrics, ramp gradually | Limiting blast radius on a real but small population |
+| **Shadow (mirroring)** | Send a **copy** of production traffic to the new model and **discard its responses** | **Zero user risk.** Validating a new model on real inputs before anyone sees it |
+| **A/B test** | Deliberately split traffic to compare outcome metrics | Deciding *which is better*, not just *whether it works* |
 
-Four layers, all of which can be asked about:
+The distinction between **shadow** and **canary** is worth being precise about, because it
+appears in questions:
 
-**1. Infrastructure** — GPU utilisation, GPU memory, temperature/power, host CPU/RAM,
-network. (`nvidia-smi`, **DCGM** exporter → Prometheus/Grafana.)
+- **Shadow** — nobody sees the new model's output. You learn whether it crashes, how fast it is,
+  and how its answers compare offline. You learn **nothing** about how users react.
+- **Canary** — a small number of real users see it. You learn about user reaction, at the cost
+  of exposing them to risk.
 
-**2. Service** — requests/sec, error rate, latency percentiles (p50/p95/p99), queue
-depth, batch size, timeout rate. Never monitor the mean alone; **p99 is where users
-suffer**.
+*"Validate on real production traffic with zero risk to users"* → **shadow**, every time.
 
-**3. Model / LLM-specific** — input and output token counts, cost per request,
-time-to-first-token, truncation rate, refusal rate, tool-call failure rate, retrieval
-hit rate, guardrail trigger rate, cache hit rate.
+### Autoscaling GPU inference is different
 
-**4. Quality** — this is the layer that distinguishes ML systems from ordinary services:
+Standard web autoscaling assumes a new instance is ready in seconds. GPU model serving does not:
+loading a 14 GB model from storage into VRAM takes tens of seconds to minutes, so by the time
+your new replica is ready the traffic spike is over.
 
-- **Data drift** — the input distribution shifts away from what the model was built for.
-- **Concept drift** — the relationship between input and correct output changes.
+Practical adjustments:
+
+- **Scale on queue depth or batch saturation**, not CPU utilisation.
+- **Keep a warm pool** — some idle headroom is cheaper than dropped requests.
+- **Set generous scale-down cooldowns** so you do not terminate a replica you will need again in
+  90 seconds.
+- Consider **model caching** on local NVMe to shorten cold starts.
+
+---
+
+## 6. Monitoring and observability (task 4.5)
+
+Four layers, and the fourth is what distinguishes ML systems from ordinary services.
+
+### Layer 1 — Infrastructure
+
+GPU utilisation, GPU memory, temperature and power, host CPU and RAM, network. Collected via
+`nvidia-smi` and, in production, the **DCGM** exporter feeding Prometheus and Grafana.
+
+The most informative single number is **GPU utilisation**: consistently low utilisation while
+requests queue means you are bottlenecked somewhere else — data loading, tokenization, the
+network, or batching that is not configured.
+
+### Layer 2 — Service
+
+Requests per second, error rate, latency percentiles, queue depth, batch size, timeout rate.
+
+!!! warning "Never monitor the mean alone"
+    A mean latency of 400 ms is compatible with 95% of users getting 200 ms and 5% getting 8
+    seconds. **The p99 is where users actually suffer**, and it is the number that generates
+    support tickets. Track p50, p95 and p99 — the *shape* tells you the cause. A high p99 with a
+    normal p50 usually means queueing, cold starts, or a few very long prompts.
+
+### Layer 3 — Model / LLM-specific
+
+Metrics that only exist because this is an LLM:
+
+- Input and output **token counts** (and therefore **cost per request**)
+- **Time to first token**
+- **Truncation rate** — how often output hits the max-token cap. A high rate means answers are
+  being cut off mid-sentence
+- **Refusal rate** — a sudden rise suggests over-cautious guardrails or a prompt regression
+- **Retrieval hit rate** and reranker score distribution
+- **Guardrail trigger rate**
+- **Cache hit rate**
+- **Tool-call failure rate** for agents
+
+### Layer 4 — Quality
+
+The layer that has no analogue in normal software engineering.
+
+- **Data drift** — the input distribution moves away from what the system was built for. New
+  product names, a new customer segment, a new language.
+- **Concept drift** — the *correct answer* changes even though the inputs look the same. A policy
+  was updated; the right response to an identical question is now different.
 - **Performance decay** — accuracy falls as the world moves on.
-- **User feedback** — thumbs up/down, escalation rate, task completion.
-- **Sampled human review** and **continuous offline evaluation** on a fixed eval set.
+- **User feedback** — thumbs up/down, escalation rate, task completion, conversation abandonment.
+- **Sampled human review** and **continuous offline evaluation** against a fixed eval set.
 
-!!! warning "Drift is silent"
-    Nothing errors. Latency is fine, the dashboard is green, and the answers are quietly
-    getting worse. Detecting drift requires explicitly comparing the current input/output
-    distribution to a training or reference baseline, and re-running an eval set on a
-    schedule.
+!!! danger "Drift is a silent failure"
+    Nothing errors. Latency is normal. Every dashboard is green. And the answers are quietly
+    getting worse.
 
-**Logging and tracing**: capture the full request trace — prompt, retrieved chunks, model
-version, parameters, output, latency, cost. This is what makes an incident debuggable.
-Redact PII before it is stored, and set a retention policy.
+    This is the failure mode that standard monitoring **structurally cannot detect**, because
+    there is nothing to detect — no exception, no status code, no latency change. Detecting it
+    requires explicitly comparing the current input/output distribution against a reference
+    baseline and **re-running an evaluation set on a schedule**.
 
-## Reliability practices
+    Questions asking "which failure would standard service monitoring miss?" are asking about
+    drift.
 
-- **Timeouts** on every model call; **retries with exponential backoff** on transient
-  failures only.
-- **Circuit breakers** so a failing dependency does not cascade.
-- **Fallbacks**: a smaller/faster model, a cached response, or an honest error message.
-- **Rate limiting and quotas** per user or tenant.
-- **Health and readiness probes** — readiness must not pass until the model is loaded.
-- **Graceful degradation** — if retrieval is down, answer without RAG *and say so*,
-  rather than failing outright.
+### Logging and tracing
 
-## MLOps / LLMOps
+Capture the full request trace: prompt, retrieved chunks and their scores, model version, prompt
+version, decoding parameters, output, latency, token counts, cost. Without this you cannot debug
+a bad answer after the fact — and "the model said something wrong yesterday" is the most common
+incident report an LLM system produces.
 
-- Version **models, prompts, datasets and indexes** — all four.
-- **CI/CD** should run the evaluation suite and block on regressions, exactly like tests.
-- **Model registry** (MLflow, W&B, NGC) with lineage: which data, which code, which
+Two obligations: **redact PII before storing**, and set a **retention policy**. Prompt logs are
+one of the most under-appreciated sources of personal-data leakage. See
+[Privacy & Consent](../domain-5/privacy-consent.md).
+
+---
+
+## 7. Reliability practices
+
+- **Timeouts** on every model call. An LLM call with no timeout can hang for minutes.
+- **Retries with exponential backoff** — on *transient* failures only. Retrying a 400 Bad Request
+  just multiplies load.
+- **Circuit breakers** so a failing dependency stops being called instead of cascading.
+- **Fallbacks** — a smaller/faster model, a cached response, or an honest error. Decide in
+  advance rather than during an incident.
+- **Rate limiting and quotas** per user or tenant, so one client cannot exhaust the GPU pool.
+- **Health and readiness probes.** Readiness must not pass until the model is **loaded** —
+  otherwise Kubernetes routes traffic to a replica that will time out every request.
+- **Graceful degradation.** If retrieval is down, answer without RAG **and say so**, rather than
+  failing entirely or — worse — silently answering ungrounded.
+
+---
+
+## 8. MLOps / LLMOps
+
+An LLM application has **four** versioned dependencies where ordinary software has one:
+
+```text
+  code   +   model version   +   prompt version   +   index version
+```
+
+Any of them changing silently changes behaviour. The discipline follows:
+
+- **Version all four**, pin them in production, and record which combination produced any given
+  output.
+- **CI runs the evaluation suite** and blocks on regressions, exactly like tests. A prompt change
+  is a code change.
+- **Model registry** (MLflow, Weights & Biases, NGC) with lineage: which data, which code, which
   hyperparameters produced this artefact.
 - **Reproducibility**: pin seeds, library versions, container images and model revisions.
 
-## Key takeaways
+!!! tip "The practice that separates real systems from demos"
+    Treat the **prompt and the index as production artefacts**, not configuration. They have as
+    much influence on behaviour as the model, they change more often, and they are the two that
+    teams routinely edit without review or testing.
 
-- **Triton serves; TensorRT-LLM optimizes; NeMo builds; NIM packages; Guardrails protect.**
-- Scalability = autoscaling + batching + replicas; performance = latency/throughput
-  tuning; reliability = timeouts, retries, fallbacks, canaries.
-- Monitor infrastructure, service, model **and quality**; track p95/p99, not just the mean.
-- **Data drift and concept drift are silent failures** — detect them by comparing
+---
+
+## 9. Recap
+
+- **Scalability, performance, reliability** are distinct properties with distinct levers.
+- **Triton serves. TensorRT-LLM optimizes. NeMo builds. NIM packages. Guardrails protect.**
+- Triton gives you dynamic batching, concurrent model execution, versioning, HTTP/gRPC and
+  Prometheus metrics across multiple frameworks.
+- **Shadow deployment** validates on real traffic with zero user risk; **canary** exposes a small
+  real population.
+- GPU autoscaling must account for slow model loading — scale on queue depth, keep warm capacity.
+- Monitor four layers: infrastructure, service (**p95/p99, not the mean**), LLM-specific metrics,
+  and **quality**.
+- **Data drift and concept drift are silent** — no errors, no latency change. Detect by comparing
   distributions and re-running eval sets on a schedule.
-- Shadow deployment validates a new model on real traffic with zero user risk.
+- Reliability: timeouts, backoff, circuit breakers, fallbacks, readiness probes that wait for
+  model load, and graceful degradation that tells the user.
+- Version **code, model, prompt and index** — all four.

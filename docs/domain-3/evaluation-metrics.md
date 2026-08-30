@@ -1,172 +1,320 @@
 # Evaluation Metrics & Benchmarks
 
-*The densest, most memorisable page in the course. NVIDIA's reading list names GLUE,
-machine-translation methods, benchmarking elementary language tasks, and Jurafsky &
-Martin's* Speech and Language Processing.
+*The densest page in the course, and the highest-yield. NVIDIA's reading list names GLUE,
+machine-translation methods, "Benchmarking Elementary Language Tasks", and Jurafsky & Martin's*
+Speech and Language Processing.
 
-## The metric cheat sheet
+---
 
-| Metric | Task | What it measures | Direction |
-| --- | --- | --- | --- |
-| **Accuracy** | Classification | Fraction correct | ↑ |
-| **Precision** | Classification | Of predicted positives, how many were right | ↑ |
-| **Recall (sensitivity)** | Classification | Of actual positives, how many were found | ↑ |
-| **F1** | Classification | Harmonic mean of precision and recall | ↑ |
-| **ROC-AUC** | Binary classification | Ranking quality across all thresholds | ↑ |
-| **PR-AUC** | Imbalanced classification | Precision–recall trade-off | ↑ |
-| **Perplexity** | Language modeling | How "surprised" the model is by the text | ↓ |
-| **BLEU** | Machine translation | n-gram **precision** vs. references | ↑ |
-| **ROUGE** | Summarization | n-gram **recall** vs. references | ↑ |
-| **METEOR** | Translation | Matching with stems/synonyms + word order | ↑ |
-| **BERTScore** | Generation | **Semantic** similarity via contextual embeddings | ↑ |
-| **Exact match (EM)** | QA | Answer string matches exactly | ↑ |
-| **Recall@k / MRR / nDCG** | Retrieval | Ranking quality | ↑ |
-| **MSE / RMSE / MAE / R²** | Regression | Error magnitude / explained variance | ↓ / ↓ / ↓ / ↑ |
+## 1. Classification metrics
 
-## Classification metrics
+### The confusion matrix
 
-From the confusion matrix (TP, FP, TN, FN):
+Everything starts here. For a binary classifier there are exactly four outcomes:
 
-$$ \text{Precision} = \frac{TP}{TP+FP} \qquad \text{Recall} = \frac{TP}{TP+FN} \qquad F_1 = 2\cdot\frac{P \cdot R}{P + R} $$
+```text
+                        PREDICTED
+                    positive    negative
+              ┌──────────────┬──────────────┐
+    positive  │      TP      │      FN      │   ← actual positives
+              │ true positive│false negative│
+  ACTUAL      ├──────────────┼──────────────┤
+    negative  │      FP      │      TN      │   ← actual negatives
+              │false positive│ true negative│
+              └──────────────┴──────────────┘
+```
 
-**When each matters:**
+From it:
 
-- **Precision** when false positives are costly — spam filtering (do not delete real
-  mail), content moderation of legitimate posts.
-- **Recall** when false negatives are costly — disease screening, fraud detection, safety
-  filtering.
-- **F1** when you need one balanced number.
+$$ \text{Precision} = \frac{TP}{TP+FP} \qquad \text{Recall} = \frac{TP}{TP+FN} \qquad F_1 = 2 \cdot \frac{P \cdot R}{P+R} $$
 
-!!! danger "The accuracy trap"
-    With 99% negatives, a model that predicts "negative" always scores **99% accuracy** and
-    is useless. On imbalanced data, report **precision, recall, F1 or PR-AUC** — not
-    accuracy. This is a guaranteed exam question shape.
+The plain-language versions are worth having ready, because they resolve most questions
+instantly:
 
-**Averaging for multi-class:** *macro* (unweighted mean over classes — treats rare classes
-equally), *micro* (aggregate over all instances — dominated by frequent classes),
-*weighted* (by class support).
+- **Precision** — *"Of everything I flagged, how much was actually right?"* The denominator is
+  **what I predicted**.
+- **Recall** — *"Of everything that was actually there, how much did I find?"* The denominator is
+  **what actually exists**.
 
-## Perplexity
+### The trade-off is a business decision
 
-The intrinsic metric for language models:
+Precision and recall pull against each other. Flag more aggressively and you catch more real
+cases (recall ↑) but also more false alarms (precision ↓).
+
+Which one matters depends entirely on **which error costs more**:
+
+| Scenario | Optimise | Because |
+| --- | --- | --- |
+| Spam filtering | **Precision** | Deleting a real email is far worse than letting spam through |
+| Cancer screening | **Recall** | Missing a case is catastrophic; a false alarm means a follow-up test |
+| Fraud detection | **Recall** (usually) | Missed fraud costs money directly |
+| Content moderation of legitimate posts | **Precision** | Wrongly removing legitimate speech is the expensive error |
+
+This is not a statistical question. It is a question about consequences, and exam scenarios will
+give you the consequence in the stem.
+
+**F1** is the harmonic mean, used when you need one balanced number. The harmonic mean (not the
+arithmetic mean) is used deliberately: it punishes imbalance. Precision 1.0 with recall 0.0
+gives an arithmetic mean of 0.5 but an F1 of **0** — which is the honest assessment of a model
+that catches nothing.
+
+### The accuracy trap
+
+!!! danger "The most examinable single fact in this domain"
+    A dataset is 99% negative. A model that predicts "negative" for **every single input**
+    achieves **99% accuracy** — and catches nothing at all.
+
+    ```text
+    1000 transactions, 20 are fraudulent.
+    Model: always predict "legitimate".
+
+    accuracy  = 980/1000 = 98.0%     ← looks excellent
+    recall    =   0/20   =  0.0%     ← catches zero fraud
+    precision =   0/0    = undefined
+    F1        =            0.0
+    ```
+
+    On imbalanced data, report **precision, recall, F1 or PR-AUC** — never accuracy alone.
+    [Lab 5](../labs/05-evaluation.md) computes exactly this so you see it happen.
+
+### ROC-AUC vs. PR-AUC
+
+Both evaluate a classifier across **all possible thresholds**, so they measure ranking quality
+rather than performance at one arbitrary cutoff.
+
+- **ROC-AUC** plots true positive rate against false positive rate. Interpretable as "the
+  probability that a random positive is ranked above a random negative." 0.5 is random, 1.0 is
+  perfect.
+- **PR-AUC** plots precision against recall.
+
+**On heavily imbalanced data, prefer PR-AUC.** ROC-AUC's false-positive-rate axis has a huge
+denominator (all the negatives), so even a large number of false positives barely moves it —
+ROC-AUC can look respectable while the model is unusable in practice. PR-AUC has no such
+cushion.
+
+### Multi-class averaging
+
+- **Macro** — compute the metric per class, then average unweighted. **Treats rare classes as
+  equally important.**
+- **Micro** — aggregate over all instances. **Dominated by frequent classes.**
+- **Weighted** — average by class support.
+
+If you care about rare classes, use **macro**. Choosing micro on an imbalanced problem
+reintroduces the accuracy trap through the back door.
+
+---
+
+## 2. Perplexity
+
+The intrinsic metric for language models.
 
 $$ \text{PPL} = \exp\!\left(-\frac{1}{N}\sum_{i=1}^{N}\log P(x_i \mid x_{<i})\right) $$
 
-It is the **exponentiated average cross-entropy loss**. Intuitively, the effective number
-of equally likely choices the model is deciding among at each token. **Lower is better**;
-a perplexity of 10 means the model is about as uncertain as if choosing uniformly among
-10 tokens.
+That is the **exponentiated average cross-entropy loss** — nothing more. It is the training loss
+in a more interpretable unit.
 
-Limitations that get examined: it is only comparable **across models sharing the same
-tokenizer and test set**, and it measures fluency, **not** truthfulness, helpfulness or
-task success. A model can have excellent perplexity and be useless as an assistant.
+**The interpretation:** perplexity is the effective number of equally-likely choices the model is
+deciding among at each token. Perplexity 1 means perfect certainty. Perplexity 10 means the
+model is about as uncertain as if it were choosing uniformly from 10 options. **Lower is
+better.**
 
-## Generation metrics
+```text
+"The capital of France is ___"
 
-**BLEU** (Bilingual Evaluation Understudy) — machine translation.
+  confident model: P(Paris) = 0.9    →  low perplexity
+  uncertain model: P spread over 50 candidates  →  high perplexity
+```
 
-- **Precision-oriented**: what fraction of the candidate's n-grams appear in the reference?
-- Uses modified n-gram precision for n = 1..4, geometrically averaged.
-- Adds a **brevity penalty** so that emitting one perfect word does not score highly.
-- Range 0–1 (often ×100). Corpus-level, not sentence-level.
+### The two limitations that get tested
 
-**ROUGE** (Recall-Oriented Understudy for Gisting Evaluation) — summarization.
+**It is only comparable across models sharing a tokenizer and test set.** A model with a
+finer-grained tokenizer produces more tokens per sentence, each easier to predict, and gets a
+lower perplexity without being a better model. Comparing perplexity across tokenizers is
+meaningless.
 
-- **Recall-oriented**: what fraction of the reference's n-grams appear in the candidate?
-- **ROUGE-N** (n-gram overlap), **ROUGE-L** (longest common subsequence — order-sensitive
-  without requiring contiguity), **ROUGE-S** (skip-bigrams).
+**It measures fluency, not usefulness.** Perplexity says nothing about truthfulness,
+helpfulness, safety or task success. A model can have excellent perplexity and be a terrible
+assistant — which is exactly why instruction tuning and alignment exist as separate stages.
 
-!!! tip "The one-line distinction to memorise"
+[Lab 5](../labs/05-evaluation.md) demonstrates the second point directly: repetitive text
+("the the the the") scores very **low** perplexity while being worthless.
+
+---
+
+## 3. Generation metrics
+
+### BLEU — machine translation
+
+**Precision-oriented**: what fraction of the *candidate's* n-grams appear in the reference?
+
+- Modified n-gram precision for n = 1 to 4, combined by geometric mean.
+- Plus a **brevity penalty**, without which a system could output the single word most likely to
+  appear in any reference and score perfect precision.
+- Range 0–1, usually reported ×100. Designed as a **corpus-level** metric; sentence-level BLEU is
+  noisy.
+
+### ROUGE — summarization
+
+**Recall-oriented**: what fraction of the *reference's* n-grams appear in the candidate?
+
+- **ROUGE-N** — n-gram overlap (ROUGE-1 unigrams, ROUGE-2 bigrams).
+- **ROUGE-L** — longest common subsequence. Order-sensitive without requiring contiguity.
+- **ROUGE-S** — skip-bigrams.
+
+!!! tip "The distinction to memorise, and the reason behind it"
     **BLEU = precision, for translation. ROUGE = recall, for summarization.**
-    A summary should *cover* the source (recall); a translation should not *invent*
-    content (precision).
 
-**METEOR** — improves on BLEU by matching stems and synonyms, and penalising word-order
-fragmentation. Correlates better with human judgement at the sentence level.
+    And the reason is not arbitrary. A **translation** must not invent content — everything it
+    says should be in the source, so you measure *precision*. A **summary** must cover the
+    important content of the source — so you measure how much of the reference it *captured*,
+    which is *recall*.
 
-**BERTScore** — embeds candidate and reference with a contextual model and matches tokens
-by cosine similarity. Credits paraphrase, which n-gram metrics cannot: *"the cat is on the
-mat"* vs. *"a feline rests on the rug"* scores near zero on BLEU and high on BERTScore.
+    Swapped-answer distractors on this pair are common.
 
-**Shared weakness of all reference-based metrics:** they require reference outputs, they
-punish valid alternative phrasings, and they correlate only moderately with human
-judgement on open-ended generation. Which is why:
+**METEOR** improves on BLEU by matching **stems and synonyms** rather than exact tokens, and by
+penalising word-order fragmentation. It correlates better with human judgement at the sentence
+level.
 
-## LLM-as-a-judge
+### The shared, fatal weakness
+
+All reference-based n-gram metrics measure **surface overlap**, not meaning. Run this comparison
+and the problem is obvious:
+
+```text
+reference:  "The cat sat on the mat because it was warm."
+
+candidate A: "The cat sat on the mat because it was cozy."   → high BLEU/ROUGE
+candidate B: "A feline rested on the rug, as the spot was
+              pleasantly warm."                               → near-zero BLEU/ROUGE
+candidate C: "The cat sat."                                   → moderate ROUGE-1
+```
+
+Candidate B is an excellent paraphrase and scores worse than candidate C, which is a truncation.
+The metrics also require reference outputs, which are expensive, and there is rarely only one
+correct answer to an open-ended question.
+
+**BERTScore** addresses the semantic gap: embed candidate and reference with a contextual model
+and match tokens by cosine similarity. Candidate B now scores appropriately. It still needs a
+reference.
+
+---
+
+## 4. LLM-as-a-judge
 
 Use a strong LLM to grade outputs against a rubric.
 
-- **Scales** far better than human review and correlates reasonably well with it.
-- Works **without reference answers** — grading criteria are enough.
-- Handles open-ended, subjective tasks that BLEU/ROUGE cannot touch.
+**Why it took over:** it scales far beyond human review, correlates reasonably well with human
+judgement, works **without reference answers** (a rubric is enough), and handles open-ended
+subjective tasks that BLEU and ROUGE cannot touch.
 
-**Known biases you must be able to name:**
+**The biases you must be able to name** — these appear directly in questions:
 
-| Bias | Behaviour |
+| Bias | Behaviour | Mitigation |
+| --- | --- | --- |
+| **Position bias** | Prefers whichever response is presented first | Evaluate **both orderings** and average |
+| **Verbosity bias** | Prefers longer answers regardless of quality | Rubric that scores conciseness; control for length |
+| **Self-enhancement bias** | Prefers text from itself or its own model family | Use a **different model family** as judge |
+| **Formatting bias** | Rewards confident tone and neat structure over correctness | Explicit criteria for factual accuracy |
+
+**General mitigations:** a detailed rubric with named criteria; require a written justification
+*before* the score (which improves the score's quality, the same way chain-of-thought does); use
+pairwise comparison rather than absolute scoring where possible; and — most importantly —
+**calibrate against human labels on a sample** so you know how much to trust the judge before you
+rely on it.
+
+---
+
+## 5. Human evaluation
+
+Still the gold standard, and the thing judges are calibrated against.
+
+**Formats:**
+
+- **Likert scales** — rate 1–5 on named dimensions (helpfulness, accuracy, tone). Easy to
+  collect, but different raters use scales differently.
+- **Pairwise preference** — "which of these two is better?" **More reliable than absolute
+  scoring**, because humans are much better at comparison than at calibrated judgement. This is
+  the same reason [RLHF](rlhf-alignment.md) collects rankings rather than scores.
+- **A/B testing in production** — the only method that measures real outcomes. See
+  [Experiment Design](experiment-design.md).
+
+Requires clear guidelines, multiple annotators per item, and a measure of **inter-annotator
+agreement** (Cohen's κ for two raters, Fleiss' κ for more).
+
+---
+
+## 6. Benchmarks
+
+| Benchmark | What it tests |
 | --- | --- |
-| **Position bias** | Prefers the first (or a fixed) option in pairwise comparisons |
-| **Verbosity bias** | Prefers longer answers regardless of quality |
-| **Self-enhancement bias** | Prefers text generated by itself or its own family |
-| **Formatting bias** | Rewards confident tone and neat structure over correctness |
-
-**Mitigations:** swap the order and average, use a detailed rubric with explicit criteria,
-require a reasoned justification before the score, use a different model family as judge,
-and **calibrate against human labels** on a sample.
-
-## Human evaluation
-
-Still the gold standard. Formats: **Likert scales** (rate 1–5 on specified dimensions),
-**pairwise preference** (which of these two is better — more reliable than absolute
-scoring), and **A/B in production**.
-
-Requires clear guidelines, multiple annotators, and a measure of **inter-annotator
-agreement** (Cohen's κ for two raters, Fleiss' κ for more). See
-[Alignment & RLHF](rlhf-alignment.md#human-annotation-quality).
-
-## Benchmarks
-
-| Benchmark | Tests |
-| --- | --- |
-| **GLUE** | General Language Understanding Evaluation — 9 sentence-level tasks (sentiment, paraphrase, inference). Named explicitly in NVIDIA's reading list |
-| **SuperGLUE** | Harder successor to GLUE, created once models saturated it |
+| **GLUE** | General Language Understanding Evaluation — 9 sentence-level tasks (sentiment, paraphrase, inference). **Named explicitly in NVIDIA's reading list** |
+| **SuperGLUE** | Harder successor, created once models saturated GLUE |
 | **SQuAD** | Extractive question answering (EM and F1) |
-| **MMLU** | Massive Multitask Language Understanding — 57 subjects, multiple choice; the standard broad-knowledge benchmark |
+| **MMLU** | Massive Multitask Language Understanding — 57 subjects, multiple choice. The standard broad-knowledge benchmark |
 | **HellaSwag / ARC / WinoGrande** | Commonsense reasoning |
 | **GSM8K / MATH** | Grade-school and competition mathematics |
-| **HumanEval / MBPP** | Code generation, measured by **pass@k** (does generated code pass unit tests) |
-| **TruthfulQA** | Resistance to reproducing common misconceptions |
-| **BIG-bench** | Very large, diverse task collection |
-| **HELM** | Holistic Evaluation of Language Models — multi-metric (accuracy, calibration, robustness, fairness, bias, toxicity, efficiency) |
+| **HumanEval / MBPP** | Code generation, scored by **pass@k** — does any of *k* generated samples pass the unit tests |
+| **TruthfulQA** | Resistance to reproducing common human misconceptions |
+| **BIG-bench** | A very large, diverse task collection |
+| **HELM** | Holistic Evaluation of Language Models — **multi-metric**: accuracy, calibration, robustness, fairness, bias, toxicity, efficiency |
 | **MTEB** | Massive Text Embedding Benchmark — the standard for choosing embedding models |
-| **Chatbot Arena** | Crowdsourced pairwise human preference (Elo ratings) |
+| **Chatbot Arena** | Crowdsourced pairwise human preference, reported as Elo ratings |
 
-!!! warning "Benchmark caveats"
-    - **Contamination** — benchmarks leak into training corpora, inflating scores.
-    - **Saturation** — GLUE was superseded precisely because models topped it out.
-    - **Construct gap** — a high MMLU score does not mean the model will do *your* task well.
+**HELM is worth understanding as a philosophy**, not just a name: it exists because reporting a
+single accuracy number hides everything else about a model. Holistic evaluation reports several
+dimensions simultaneously and refuses to collapse them, on the grounds that a model that is
+accurate but toxic is not simply "good".
 
-    Public benchmarks are for coarse model selection. **Your private eval set decides.**
+### Why benchmark scores mislead
 
-## Choosing a metric
+**Contamination.** Benchmarks are public, so they leak into training corpora. A model that
+memorised the test set scores brilliantly and has learned nothing. This is why scores creep
+upward across the industry and why any serious evaluation is **decontaminated** — check that
+your test items do not appear in the training data.
 
-1. **Match the task.** Classification → F1/PR-AUC. Translation → BLEU/COMET.
-   Summarization → ROUGE + faithfulness. Open-ended chat → human or LLM judge. RAG → the
-   [RAG triad](rag-evaluation.md).
-2. **Match the cost of errors.** Precision vs. recall is a business decision, not a
-   statistical one.
-3. **Use more than one.** A single number always hides something — pair a quality metric
-   with latency, cost and a safety metric.
-4. **Always compare against a baseline** and report variance.
+**Saturation.** GLUE was replaced by SuperGLUE precisely because models topped it out. A
+benchmark near its ceiling stops discriminating between models.
 
-## Key takeaways
+**Construct gap.** MMLU measures multiple-choice academic knowledge. Your application probably
+does something else. A high MMLU score is weak evidence that a model will do *your* task well.
 
-- **Precision** = of what I flagged, how much was right. **Recall** = of what existed, how
-  much did I find. F1 balances them.
-- **Accuracy is misleading on imbalanced data.**
-- **Perplexity** = exponentiated cross-entropy; lower is better; comparable only across
-  same-tokenizer models; measures fluency, not truth.
-- **BLEU = precision/translation. ROUGE = recall/summarization. BERTScore = semantic.**
-- LLM-as-a-judge scales evaluation but carries position, verbosity and self-enhancement
-  biases — mitigate and calibrate.
-- **GLUE** and **SuperGLUE** for language understanding; **MMLU** for broad knowledge;
-  **HELM** for holistic evaluation; **MTEB** for embeddings.
+!!! important "Public benchmarks select; your eval set decides"
+    Use public benchmarks for coarse model selection — narrowing twenty candidates to three.
+    Then decide between those three using a **private evaluation set built from your own
+    traffic**, which cannot be contaminated and measures the thing you actually care about.
+
+---
+
+## 7. Choosing a metric
+
+1. **Match the task.** Classification → F1 or PR-AUC. Translation → BLEU or COMET.
+   Summarization → ROUGE **plus faithfulness**. Open-ended chat → human or LLM judge. RAG → the
+   [RAG triad](rag-evaluation.md). Retrieval → recall@k, MRR, nDCG.
+2. **Match the cost of errors.** Precision vs. recall is a consequence question.
+3. **Use more than one.** A single number always hides something. Pair a quality metric with
+   latency, cost and a safety metric — and report subgroup breakdowns, per
+   [Bias & Fairness](../domain-5/bias-fairness.md).
+4. **Always compare against a baseline** and **report variance**. A 0.3-point gain inside a
+   2-point standard deviation is noise.
+
+---
+
+## 8. Recap
+
+- **Precision** = of what I flagged, how much was right. **Recall** = of what existed, how much I
+  found. **F1** is their harmonic mean, which punishes imbalance.
+- Precision-vs-recall is a **business decision** about which error costs more.
+- **Accuracy is misleading on imbalanced data** — 99% accuracy can mean zero detections. Use
+  PR-AUC, F1, recall.
+- **Perplexity** = exponentiated cross-entropy; **lower is better**; comparable only across
+  same-tokenizer models; measures **fluency, not truth**.
+- **BLEU = precision, translation. ROUGE = recall, summarization.** Both punish valid paraphrases;
+  **BERTScore** measures semantic similarity instead.
+- **LLM-as-a-judge** scales evaluation but carries **position, verbosity, self-enhancement and
+  formatting** biases — swap orders, use rubrics, use a different model family, calibrate against
+  humans.
+- **Pairwise preference beats absolute scoring** for human evaluation.
+- **GLUE/SuperGLUE** = NLU, **MMLU** = broad knowledge, **HELM** = holistic multi-metric,
+  **MTEB** = embeddings, **pass@k** = code.
+- Public benchmarks suffer **contamination, saturation and construct gap**. Your private eval set
+  is what decides.
