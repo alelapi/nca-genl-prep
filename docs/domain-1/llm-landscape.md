@@ -117,7 +117,7 @@ Two consequences explain a remarkable share of LLM behaviour, and therefore of e
 **Output is probabilistic, not deterministic.** The same prompt can produce different answers
 across runs unless you force greedy decoding. This is not a bug; sampling is how the model
 produces varied, natural text. See
-[Prompt Engineering](prompt-engineering.md#decoding-parameters).
+[Prompt Engineering](prompt-engineering.md#6-decoding-parameters).
 
 **The model optimises plausibility, not truth.** Nothing in the objective rewards being correct
 — only being likely. A fabricated citation with a real-looking author, journal and year is *very

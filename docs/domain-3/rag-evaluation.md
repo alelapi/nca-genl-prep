@@ -59,7 +59,7 @@ That is why recall@k is the first number to look at, and why "increase *k*" is o
 first response to poor answers.
 
 Ranking still matters for two reasons: **context is finite and expensive**, and long contexts
-suffer from ["lost in the middle"](../domain-1/rag.md#where-rag-systems-fail-and-how-to-tell-which).
+suffer from ["lost in the middle"](../domain-1/rag.md#5-where-rag-systems-fail-and-how-to-tell-which).
 So MRR and nDCG tell you whether you could use a smaller, better-ranked *k* — which is usually
 both cheaper and more accurate.
 
@@ -154,7 +154,7 @@ the triad, mostly using LLM-as-a-judge. NVIDIA's **NeMo Evaluator** covers model
 evaluation within its own stack.
 
 Because these rely on judge models, the
-[judge biases](evaluation-metrics.md#llm-as-a-judge) apply — position, verbosity,
+[judge biases](evaluation-metrics.md#4-llm-as-a-judge) apply — position, verbosity,
 self-enhancement. **Calibrate against human labels on a sample** before trusting the absolute
 numbers. Judge-based metrics are most reliable as *relative* signals (did this change make things
 better?) and least reliable as absolute claims ("our faithfulness is 0.87").

@@ -193,7 +193,7 @@ Recognise these by name; each solves a specific failure.
 
 **Hybrid search** — dense + BM25 keyword retrieval, fused with Reciprocal Rank Fusion. Fixes
 exact identifiers, error codes and rare proper nouns. See
-[Embeddings](embeddings.md#the-two-techniques-that-fix-dense-retrievals-weaknesses).
+[Embeddings](embeddings.md#8-the-two-techniques-that-fix-dense-retrievals-weaknesses).
 
 **Reranking** — retrieve top-50 with a bi-encoder, re-score with a cross-encoder, keep top-5.
 Fixes ranking quality when recall is fine but the right chunk is buried.

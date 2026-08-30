@@ -265,7 +265,7 @@ Costs roughly 30% extra compute, saves a large fraction of activation memory. Of
 most effective knob when you are just short of fitting.
 
 **Mixed precision (AMP).** FP16/BF16 compute with an FP32 master copy. ~2× faster, about half
-the activation memory. See [Inference Optimization](inference-optimization.md#quantization).
+the activation memory. See [Inference Optimization](inference-optimization.md#3-quantization).
 
 **Gradient accumulation.** Run several micro-batches, accumulating gradients, before stepping
 the optimizer. Simulates a large batch on limited memory — at the cost of proportionally more

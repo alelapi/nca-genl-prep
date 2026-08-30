@@ -582,7 +582,7 @@ embedding matrix (the same weights, transposed) to save parameters.
 
 **6. Softmax and sample.** Logits become a probability distribution; a token is chosen from it
 according to the decoding parameters — temperature, top-k, top-p. See
-[Prompt Engineering](prompt-engineering.md#decoding-parameters).
+[Prompt Engineering](prompt-engineering.md#6-decoding-parameters).
 
 **7. Append and repeat.** The chosen token is appended to the input and the whole thing runs
 again. This is **autoregressive decoding**, and it is why generating 500 tokens costs roughly

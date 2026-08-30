@@ -125,7 +125,7 @@ care; INT4 has a real, measurable quality cost.
   work.
 - **QAT (quantization-aware training)** — simulate quantization during training so the model
   learns robust weights. Expensive, recovers accuracy. See
-  [Customization](customization.md#quantization-aware-training).
+  [Customization](customization.md#5-quantization-aware-training).
 - **Weight-only quantization** — quantize the weights, keep activations in FP16. Since weights
   dominate memory traffic during decode, this captures most of the benefit with less accuracy
   risk. **GPTQ** and **AWQ** are the standard methods, and this is the common choice for LLMs.

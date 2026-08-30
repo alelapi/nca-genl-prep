@@ -303,7 +303,7 @@ same item lands in both training and test.
 
 **Decontaminate.** Remove anything overlapping your evaluation or benchmark sets. Otherwise your
 metrics measure memorisation, not capability. See
-[Evaluation Metrics](../domain-3/evaluation-metrics.md#benchmarks).
+[Evaluation Metrics](../domain-3/evaluation-metrics.md#6-benchmarks).
 
 **Balance.** The model over-produces whatever is over-represented. If 80% of your fine-tuning
 examples are refusals, expect a model that refuses.
@@ -311,7 +311,7 @@ examples are refusals, expect a model that refuses.
 **Ensure annotation quality.** Write an explicit guideline, use multiple annotators, and measure
 **inter-annotator agreement** (Cohen's or Fleiss' κ). Low agreement means the *task* is
 underspecified — a model trained on those labels cannot exceed their noise ceiling. See
-[Alignment & RLHF](../domain-3/rlhf-alignment.md#human-annotation-quality).
+[Alignment & RLHF](../domain-3/rlhf-alignment.md#5-human-annotation-quality).
 
 **Consider synthetic data.** Generate with a stronger model, then filter. Cheap and effective;
 the risk is amplifying the teacher's biases and errors, and producing data that is

@@ -169,7 +169,7 @@ Aligned models sometimes score slightly worse on raw benchmarks than their base 
 
 **Verbosity/length bias.** Raters prefer longer, more thorough-looking answers, so models learn
 to pad. This is the same bias that affects
-[LLM-as-a-judge](evaluation-metrics.md#llm-as-a-judge), for the same reason.
+[LLM-as-a-judge](evaluation-metrics.md#4-llm-as-a-judge), for the same reason.
 
 **Jailbreaking.** Adversarial prompts that recover the unaligned behaviour. See
 [Guardrails & LLM Security](../domain-5/guardrails-security.md).

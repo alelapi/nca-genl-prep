@@ -130,7 +130,7 @@ precision, gradient accumulation, ZeRO/FSDP sharding, CPU offloading. All covere
 !!! note "Bandwidth over FLOPS — the counterintuitive one"
     For **inference**, a GPU with more memory bandwidth often beats one with more FLOPS, because
     decode is bandwidth-bound (see
-    [Inference Optimization](inference-optimization.md#why-llm-inference-is-slow--the-fact-that-explains-everything-else)).
+    [Inference Optimization](inference-optimization.md#2-why-llm-inference-is-slow-the-fact-that-explains-everything-else)).
     For **training**, which is compute-heavy, FLOPS matter more.
 
     That is the reasoning behind H200 over H100 for inference workloads: same compute, more

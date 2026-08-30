@@ -57,7 +57,7 @@ There is no internal mechanism that fires and says "no information found".
 
 **Sampling randomness.** Higher temperature samples lower-probability tokens, and improbable
 claims are more often false ones. See
-[Prompt Engineering](../domain-1/prompt-engineering.md#decoding-parameters).
+[Prompt Engineering](../domain-1/prompt-engineering.md#6-decoding-parameters).
 
 **Lossy compression.** Trillions of tokens compressed into billions of parameters cannot be
 lossless. Details blur, get approximated, and recombine — the way human memory produces confident
@@ -93,7 +93,7 @@ toward answering rather than declining. See [Alignment & RLHF](rlhf-alignment.md
     was invented.
 
     RAG systems are therefore evaluated on **faithfulness**, not factual accuracy. See the
-    [RAG triad](rag-evaluation.md#generation-metrics--the-rag-triad).
+    [RAG triad](rag-evaluation.md#3-generation-metrics-the-rag-triad).
 
 ---
 
@@ -168,7 +168,7 @@ is genuinely reliable, because it does not rely on the model at all.
 !!! warning "You cannot ask the model whether it is sure"
     LLMs are poorly calibrated about their own knowledge. A model will confidently defend a
     fabrication and can be talked out of a correct answer by mild pushback — a direct consequence
-    of the [sycophancy](rlhf-alignment.md#alignment-failure-modes) that preference training
+    of the [sycophancy](rlhf-alignment.md#4-alignment-failure-modes) that preference training
     introduces.
 
     Self-reported confidence is **generated text**, not introspection. Verification must come

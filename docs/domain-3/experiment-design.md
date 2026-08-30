@@ -185,7 +185,7 @@ It must be:
   queries.
 - **Stable and versioned**, so that a score from March is comparable to a score from June.
 - **Held out.** Never tune prompts against the same set you report on. Keep a separate dev set
-  for iteration — the [three-way split](../domain-1/ml-fundamentals.md#data-splits-and-the-cardinal-sin-of-leakage)
+  for iteration — the [three-way split](../domain-1/ml-fundamentals.md#6-data-splits-and-the-cardinal-sin-of-leakage)
   from classical ML applies unchanged.
 - **Growing.** Every production failure becomes a permanent test case. This is how the eval set
   gets good over time, and it is why it is worth starting one before it feels necessary.
@@ -205,13 +205,13 @@ and calling it an improvement.
 
 If your benchmark appeared in the model's training data, its score is meaningless. This is why
 public benchmark scores inflate over time and why a **private** eval set built from your own
-traffic is the one that decides. See [Evaluation Metrics](evaluation-metrics.md#benchmarks).
+traffic is the one that decides. See [Evaluation Metrics](evaluation-metrics.md#6-benchmarks).
 
 ---
 
 ## 6. Cross-validation in this context
 
-Covered fully in [ML Fundamentals](../domain-1/ml-fundamentals.md#cross-validation). What matters
+Covered fully in [ML Fundamentals](../domain-1/ml-fundamentals.md#7-cross-validation). What matters
 for the Experimentation domain:
 
 - k-fold CV gives a **lower-variance estimate** **and a standard deviation** — and the second is
